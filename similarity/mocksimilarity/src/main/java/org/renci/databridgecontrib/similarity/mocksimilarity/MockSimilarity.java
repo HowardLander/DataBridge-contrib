@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
-import org.renci.databridge.util.*;
 import org.renci.databridge.persistence.metadata.*;
 import com.rabbitmq.client.*;
 
@@ -20,6 +19,9 @@ public class MockSimilarity implements RelevanceInterface {
 
     public double compareCollections (CollectionTransferObject collection1,
                                       CollectionTransferObject collection2) {
-        return .75;
+        
+        int version1 = collection1.getVersion();
+        int version2 = collection2.getVersion();
+        return (version1 + version2)/10.;
     }
 }
