@@ -1,16 +1,16 @@
 <project>
 
     <parent>
-       <groupId>org.renci.databridge-contrib.similarity</groupId>
+       <groupId>org.renci.databridge.contrib.similarity</groupId>
        <artifactId>similarity</artifactId>
        <version>1.0-BETA</version>
        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.renci.databridge-contrib.similarity</groupId>
+    <groupId>org.renci.databridge.contrib.similarity</groupId>
     <artifactId>mocksimilarity</artifactId>
-    <name>DataBridge Contrib </name>
+    <name>DataBridge Contrib Similarity: Mock Similarity</name>
     <version>1.0-BETA</version>
 
     <dependencies>

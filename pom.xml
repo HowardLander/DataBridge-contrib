@@ -2,14 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.renci.databridge-contrib</groupId>
+  <groupId>org.renci.databridge.contrib</groupId>
   <artifactId>databridge-contrib</artifactId>
   <packaging>pom</packaging>
-  <name>DataBridgeContrib</name>
+  <name>DataBridge Contrib</name>
   <version>1.0-BETA</version>
 
   <modules>
     <module>similarity</module>
+    <module>formatter</module>
   </modules>
 
   <properties>

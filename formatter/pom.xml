@@ -9,14 +9,27 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.renci.databridge.contrib.similarity</groupId>
-  <artifactId>similarity</artifactId>
+  <groupId>org.renci.databridge.contrib.formatter</groupId>
+  <artifactId>formatter</artifactId>
   <packaging>pom</packaging>
   <version>1.0-BETA</version>
-  <name>DataBridge Contrib Similarity</name>
+  <name>DataBridge Contrib Formatter</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>mocksimilarity</module>
+    <module>oaipmh</module>
   </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.renci.databridge.util</groupId>
+      <artifactId>databridge-util</artifactId>
+      <version>1.0-BETA</version>
+    </dependency>
+    <dependency>
+      <groupId>org.renci.databridge.formatter</groupId>
+      <artifactId>databridge-formatter</artifactId>
+      <version>1.0-BETA</version>
+    </dependency>
+  </dependencies>
 
 </project>

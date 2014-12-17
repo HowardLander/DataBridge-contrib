@@ -1,0 +1,17 @@
+<!--
+
+This file disambiguates two elements called 'qstn' in the CodeBook schema that collide when the schema compiler tries to generate Java content objects.
+
+-->
+<jxb:bindings version="2.0"
+              xmlns:ddi="http://www.icpsr.umich.edu/DDI" 
+              xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb">
+  <jxb:bindings schemaLocation="../xsd/Version2-0.xsd" node="/xs:schema">
+    <jxb:bindings node="//xs:complexType[@name='varType']">
+      <jxb:bindings node=".//xs:element[@name='qstn']">
+        <jxb:property name="RemappedQstn1"/>
+      </jxb:bindings>
+    </jxb:bindings>
+  </jxb:bindings>
+</jxb:bindings>

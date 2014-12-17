@@ -1,4 +1,4 @@
-package org.renci.databridgecontrib.similarity.mocksimilarity;
+package org.renci.databridge.contrib.similarity.mocksimilarity;
 
 import java.io.*;
 import java.util.*;
