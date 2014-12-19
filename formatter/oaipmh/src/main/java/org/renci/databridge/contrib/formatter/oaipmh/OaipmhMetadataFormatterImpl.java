@@ -19,11 +19,16 @@ import javax.xml.bind.JAXBElement;
 import org.renci.databridge.formatter.MetadataFormatter;
 import org.renci.databridge.formatter.FormatterException;
 
+import org.renci.databridge.persistence.metadata.MetadataObject;
 import org.renci.databridge.persistence.metadata.CollectionTransferObject;
+import org.renci.databridge.persistence.metadata.FileTransferObject;
+import org.renci.databridge.persistence.metadata.VariableTransferObject;
 
 /**
- * MetadataFormatter implementation for OAI-PMH.
- 
+ * MetadataFormatter implementation for OAI-PMH XML document.
+ *
+ * Every record in the OAI-PMH document maps to a MetadataObject.
+ *
  * @author mrshoffn
  */
 public class OaipmhMetadataFormatterImpl implements MetadataFormatter {
@@ -31,21 +36,26 @@ public class OaipmhMetadataFormatterImpl implements MetadataFormatter {
   private Logger logger = Logger.getLogger ("org.renci.databridge.formatter.oaipmh");
 
   @Override
-  public CollectionTransferObject format (byte [] bytes) throws FormatterException {
+  public List<MetadataObject> format (byte [] bytes) throws FormatterException {
 
+    List<MetadataObject> metadataObjects = new ArrayList<MetadataObject> ();
     String metadataString = new String (bytes);
     this.logger.log (Level.FINER, "bytes: '" + metadataString + "'");
-
-    CollectionTransferObject cto = new CollectionTransferObject ();
 
     OAIPMHtype ot = unmarshal (metadataString);
     ListRecordsType lrt = ot.getListRecords ();
     List<RecordType> rtList = lrt.getRecord ();
     Iterator<RecordType> i = rtList.iterator ();
     while (i.hasNext ()) {
+
       RecordType r = i.next ();
       HeaderType h = r.getHeader ();
 
+      MetadataObject mo = new MetadataObject ();
+      metadataObjects.add (mo);
+      CollectionTransferObject cto = new CollectionTransferObject ();
+      mo.setCollectionTransferObject (cto);
+ 
       // URL | record->header->indentifier e.g., Harris//hdl:1902.29/H-15085
       cto.setURL (constructUrl (h.getIdentifier ()));
 
@@ -116,7 +126,7 @@ public class OaipmhMetadataFormatterImpl implements MetadataFormatter {
 
     }
 
-    return cto;
+    return metadataObjects;
 
   }
   
