@@ -1,5 +1,3 @@
---- OAI-PMD formatter ------
-
 Formatters are POJO classes that are mapped to XML documents. They are generated using JAXB against an XSD schema document. This happens during the generate-sources phase of the maven lifecycle. Then when a document that is an example of the XSD comes in to the formatter it is converted to an instance of the relevant POJOs.
 
 Additional formatters can be added by:

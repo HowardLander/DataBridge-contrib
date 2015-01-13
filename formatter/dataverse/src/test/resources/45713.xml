@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Workfile: metadata-ddi.asp $ $Revision: 10 $ $Date: 2/23/04 5:30p $ -->
+<codeBook xmlns="http://www.icpsr.umich.edu/DDI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.icpsr.umich.edu/DDI &#10;          http://www.icpsr.umich.edu/DDI/Version1-3.xsd">
+<docDscr source="archive">
+<citation>
+<titlStmt source="archive">
+<titl source="archive">Pew Internet &amp; American Life Project Poll: Parents and Teen Survey</titl>
+</titlStmt>
+<holdings URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=summary_Link?Archno=USPEW2006-IALTEEN"/>
+</citation>
+</docDscr>
+
+<docDscr><citation><titlStmt><titl>Pew Internet &amp; American Life Project Poll: Parents and Teen Survey</titl><IDNo agency="handle">hdl:1902.4/USPEW2006-IALTEEN</IDNo></titlStmt><distStmt><distrbtr>IQSS Dataverse Network</distrbtr><distDate date="2010-04-13">2010-04-13</distDate></distStmt><biblCit format="DVN">Pew Internet &amp; American Life Project, 2/16/2010 3:16:56 PM, "Pew Internet &amp; American Life Project Poll: Parents and Teen Survey", &lt;a href='http://hdl.handle.net/1902.4/USPEW2006-IALTEEN'&gt;hdl:1902.4/USPEW2006-IALTEEN&lt;/a&gt; 
+Roper Center for Public Opinion Research
+ [Distributor]</biblCit><holdings URI="http://dvn.iq.harvard.edu/dvn/study?globalId=hdl:1902.4/USPEW2006-IALTEEN"/></citation></docDscr>
+<stdyDscr>
+<citation source="archive">
+<titlStmt source="archive">
+<titl source="archive">Pew Internet &amp; American Life Project Poll: Parents and Teen Survey</titl>
+<IDNo agency="Roper Center" source="archive">USPEW2006-IALTEEN</IDNo>
+</titlStmt>
+<rspStmt source="archive">
+<AuthEnty source="archive">Pew Internet &amp; American Life Project</AuthEnty>
+</rspStmt>
+<prodStmt source="archive">
+<producer source="archive">Princeton Survey Research Associates International</producer>
+<prodDate source="archive">October, 2006</prodDate>
+</prodStmt>
+<distStmt>
+<distrbtr abbr="Roper" affiliation="University of Connecticut" URI="http://www.ropercenter.uconn.edu">
+<ExtLink role="image" URI="http://www.ropercenter.uconn.edu/images/roper_small.jpg" title="logo"/>
+           Roper Center for Public Opinion Research
+          <ExtLink URI="http://www.ropercenter.uconn.edu/" title="URL"/>
+</distrbtr>
+<contact source="archive" email="rcweb@ropercenter.uconn.edu" URI=""/>
+<distDate date="2/16/2010 3:16:56 PM">2/24/2010</distDate>
+</distStmt>
+<biblCit source="archive">
+ PEW INTERNET &amp; AMERICAN LIFE PROJECT POLL: PARENTS AND TEEN SURVEY
+ [computer file]. Roper Center for Public Opinion Research Study
+ USPEW2006-IALTEEN Version 2. Princeton Survey Research Associates
+ International [producer], 2006. Storrs, CT: The Roper Center for Public
+ Opinion Research, University of Connecticut [distributor], 2010.
+        </biblCit>
+</citation>
+<stdyInfo>
+<abstract source="archive">
+ This survey covers the following issues and topics: Computer usage (1);
+ Internet usage (2); email usage (2); Internet in Internet/email (2);
+ time spent online (1); location of Internet connection (6); online
+ activities (17); time connected in particular locations (2); child's
+ age (1); house rules (7); online profiles (5); software on computer
+ (3); checking child's Internet activities (2); affect of Internet on
+ child (1); personal possessions (10); possessions making life easier
+ (2); type of Internet connection (1); participation (4); employment
+ (1); communicating/socializing with friends (7); sharing information
+ with others (9); uploading photos (3); uploading videos (3);
+ information on profile (12); using fake information on profile (1);
+ ease of finding profile (1); visiting social networking sites (1); ways
+ to use social networking sites (5); online friends as real world
+ strangers (3); communication through social networking sites (5);
+ online experiences (4); bullying/harassment (1); contact by complete
+ stranger (4); location of computer (1); playing video games (2).
+        </abstract>
+<sumDscr>
+<timePrd>OCTOBER 23-NOVEMBER 19, 2006</timePrd>
+<collDate event="start" source="producer">10/23/2006</collDate>
+<collDate event="end" source="producer">11/19/2006</collDate>
+<nation abbr="US">United States</nation>
+<universe source="archive">Parents of 12-17 year olds and Children 12-17 years old</universe>
+<dataKind source="archive">survey data</dataKind>
+</sumDscr>
+</stdyInfo>
+<method>
+<dataColl>
+<timeMeth>cross-section</timeMeth>
+<dataCollector>Princeton Survey Research Associates International</dataCollector>
+<collMode source="archive">telephone</collMode>
+<weight source="archive">
+ This study includes a weight variable as provided by the data producer.
+ For further information please consult the study documentation.
+          </weight>
+</dataColl>
+</method>
+<dataAccs source="archive">
+<setAvail source="archive">
+<accsPlac source="archive" URI="http://www.ropercenter.uconn.edu">Roper Center for Public Opinion Research</accsPlac>
+<fileQnty source="archive">2 data files and corresponding documentation.</fileQnty>
+</setAvail>
+<useStmt source="archive">
+<citReq source="archive">
+ Publications based on Roper Center data collections should acknowledge
+ the data sources by means of bibliographic citations.  To ensure that
+ source attributions are available for use by future social science
+ researchers, citations must appear in footnotes or in reference
+ sections of publications. The bibliographic citation for this data
+ collection is:
+ PEW INTERNET &amp; AMERICAN LIFE PROJECT POLL: PARENTS AND TEEN SURVEY
+ [computer file]. Roper Center for Public Opinion Research Study
+ USPEW2006-IALTEEN Version 2. Princeton Survey Research Associates
+ International [producer], 2006. Storrs, CT: The Roper Center for Public
+ Opinion Research, University of Connecticut [distributor], 2010.
+          </citReq>
+<disclaimer source="archive">DATA DISCLAIMER: Files are offered "as is"
+ with no warranty or claim for fitness for any purpose.  In no event
+ shall the Center be liable for any actual, incidental or consequential
+ damages arising from use of these files. </disclaimer>
+</useStmt>
+</dataAccs>
+</stdyDscr>
+<fileDscr source="archive" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=82230&amp;ft=2&amp;df=1&amp;fs=703120&amp;sid=USPEW2006-IALTEEN">
+<fileTxt source="archive">
+<fileName source="archive">p2006ialteen.dat</fileName>
+<dimensns source="archive">
+<caseQnty source="archive">1870</caseQnty>
+<varQnty source="archive">approx. 202</varQnty>
+<logRecL source="archive">750</logRecL>
+<recPrCas source="archive">1</recPrCas>
+<recNumTot source="archive">935</recNumTot>
+</dimensns>
+</fileTxt>
+</fileDscr>
+<fileDscr source="archive" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=82231&amp;ft=2&amp;df=3&amp;fs=932504&amp;sid=USPEW2006-IALTEEN">
+<fileTxt source="archive">
+<fileName source="archive">p2006ialteen.por</fileName>
+<dimensns source="archive">
+<caseQnty source="archive">1870</caseQnty>
+<varQnty source="archive">approx. 202</varQnty>
+</dimensns>
+</fileTxt>
+</fileDscr>
+<otherMat level="study" type="other" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=82238&amp;ft=1&amp;df=8&amp;fs=506495&amp;sid=USPEW2006-IALTEEN">
+<labl>uspew2006-ialteen.pdf</labl>
+<notes source="producer">Documentation, PDF</notes>
+</otherMat>
+<otherMat level="study" type="other" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=82237&amp;ft=1&amp;df=9&amp;fs=477184&amp;sid=USPEW2006-IALTEEN">
+<labl>uspew2006-ialteen.doc</labl>
+<notes source="producer">Documentation, Word</notes>
+</otherMat>
+</codeBook>

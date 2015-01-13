@@ -16,7 +16,7 @@
   <name>DataBridge Contrib Formatter</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>oaipmh</module>
+    <module>dataverse</module>
   </modules>
 
   <dependencies>
