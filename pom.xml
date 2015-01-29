@@ -11,6 +11,7 @@
   <modules>
     <module>similarity</module>
     <module>formatter</module>
+    <module>sna</module>
   </modules>
 
   <properties>
