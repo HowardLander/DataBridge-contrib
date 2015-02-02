@@ -36,31 +36,31 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
   @Override
   public List<MetadataObject> format (byte [] bytes) throws FormatterException {
 
-    List<MetadataObject> metadataObjects = new ArrayList<MetadataObject> ();
     String metadataString = new String (bytes);
     this.logger.log (Level.FINER, "bytes: '" + metadataString + "'");
+    CodeBook cb = unmarshal (metadataString, CodeBook.class);
 
+    List<MetadataObject> metadataObjects = new ArrayList<MetadataObject> ();
     this.logger.log (Level.FINER, "Processing a CodeBook.");
-    processCodeBook (metadataObjects, metadataString); 
+    metadataObjects.add (extractCodeBook (cb)); 
 
     return metadataObjects;
 
   }
  
   /**
-   * @param metadataObjects is modified by this method.
+   *  
    */
-  protected void processCodeBook (List<MetadataObject> metadataObjects, String metadataString) throws FormatterException {
-
-    CodeBook cb = unmarshal (metadataString, CodeBook.class);
+  public MetadataObject extractCodeBook (CodeBook codeBook) throws FormatterException {
 
     MetadataObject mo = new MetadataObject ();
-    metadataObjects.add (mo);
     CollectionTransferObject cto = new CollectionTransferObject ();
     mo.setCollectionTransferObject (cto);
+    List<FileTransferObject> ftos = new ArrayList<FileTransferObject> ();
+    List<VariableTransferObject> vtos = new ArrayList<VariableTransferObject> ();
 
-// codebook extraction
-      List<StdyDscrType> sdtList = cb.getStdyDscr ();
+    // codebook extraction
+      List<StdyDscrType> sdtList = codeBook.getStdyDscr ();
       StdyDscrType sdt = sdtList.get (0);
 
       List<CitationType> ctList = sdt.getCitation ();
@@ -110,7 +110,8 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
         // cto.setExtra (cto);
 
       }
-// end codebook extraction
+
+    return mo;
 
   }
   

@@ -21,6 +21,8 @@ import org.renci.databridge.persistence.metadata.FileTransferObject;
 import org.renci.databridge.persistence.metadata.VariableTransferObject;
 import org.renci.databridge.formatter.MetadataFormatter;
 
+import org.renci.databridge.contrib.formatter.codebook.CodeBook;
+
 public class OaipmhMetadataFormatterImpTest {
 
     protected static String oaiPmhString;
@@ -45,7 +47,7 @@ public class OaipmhMetadataFormatterImpTest {
       System.out.println ("Testing unmarshal OAI-PMH...");
 
       OaipmhMetadataFormatterImpl omfi = new OaipmhMetadataFormatterImpl ();
-      OAIPMHtype ot = omfi.unmarshal (oaiPmhString, OAIPMHtype.class);
+      OAIPMHtype ot = omfi.unmarshal (oaiPmhString, OAIPMHtype.class, OAIPMHtype.class, CodeBook.class);
       TestCase.assertTrue ("Returned object is null",  ot != null);
 
       ListRecordsType lrt = ot.getListRecords ();
@@ -53,6 +55,8 @@ public class OaipmhMetadataFormatterImpTest {
       RecordType r = lr.get (0);
       HeaderType h = r.getHeader ();
       String i = h.getIdentifier ();
+
+      // @todo assert CodeBook objects are unmarshalled
 
       TestCase.assertTrue ("Record identifier is incorrect.", "Harris//hdl:1902.29/H-15085".equals (i));
 

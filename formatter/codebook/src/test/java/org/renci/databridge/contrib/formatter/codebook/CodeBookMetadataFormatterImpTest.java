@@ -45,7 +45,7 @@ public class CodeBookMetadataFormatterImpTest {
       System.out.println ("Testing unmarshal CodeBook...");
 
       CodeBookMetadataFormatterImpl cbmfi = new CodeBookMetadataFormatterImpl ();
-      CodeBook cb = cbmfi.unmarshal (codeBookString, CodeBook.class);
+      CodeBook cb = cbmfi.unmarshal (codeBookString, CodeBook.class, CodeBook.class);
       TestCase.assertTrue ("Returned object is null",  cb != null);
 
       // ListRecordsType lrt = ot.getListRecords ();

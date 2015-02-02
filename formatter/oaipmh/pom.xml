@@ -20,6 +20,11 @@
             <artifactId>databridge-persistence</artifactId>
             <version>1.0-BETA</version>
         </dependency>
+        <dependency>
+            <groupId>org.renci.databridge.contrib.formatter.codebook</groupId>
+            <artifactId>codebook</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
     </dependencies>
 
     <build>
