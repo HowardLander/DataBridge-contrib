@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.renci.databridge.contrib.sna</groupId>
     <artifactId>mocksna</artifactId>
-    <packaging>jar</packaging>
     <name>DataBridge Contrib SNA: Mock SNA</name>
     <version>1.0-BETA</version>
 
