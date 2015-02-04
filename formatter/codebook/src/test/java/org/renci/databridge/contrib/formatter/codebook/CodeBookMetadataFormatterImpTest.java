@@ -69,6 +69,9 @@ public class CodeBookMetadataFormatterImpTest {
         CollectionTransferObject cto = mo.getCollectionTransferObject ();
         TestCase.assertTrue ("Returned object is null", cto != null);
         System.out.println (cto);
+        System.out.println ("FILE TRANSFER OBJECTS: " + mo.getFileTransferObjects ());
+        System.out.println ("VARIABLE TRANFER OBJECTS: " + mo.getVariableTransferObjects ());
+
         // TestCase.assertTrue ("CollectionTransferObject.subject has incorrect value ", ((cto.getProducer () != null) && (cto.getProducer ().startsWith ("Louis Harris"))));
       }
 

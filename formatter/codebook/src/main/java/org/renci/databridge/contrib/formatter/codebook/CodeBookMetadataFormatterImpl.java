@@ -61,8 +61,11 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
     mo.setCollectionTransferObject (cto);
     List<FileTransferObject> ftos = new ArrayList<FileTransferObject> ();
     List<VariableTransferObject> vtos = new ArrayList<VariableTransferObject> ();
+    mo.setFileTransferObjects (ftos);
+    mo.setVariableTransferObjects (vtos);
 
     // @todo put an "empty" check here like in OAIPMH formatter
+
     List<DocDscrType> ddtList = codeBook.getDocDscr ();
     DocDscrType ddt = ddtList.get (0);
     CitationType ct = ddt.getCitation ();
@@ -73,7 +76,6 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
     cto.setTitle (flatten (tt.getContent ()));
 
     // URL | docDscr->citation->holdings:URI
-
     List<HoldingsType> htList = ct.getHoldings ();
     if (htList != null && htList.size () > 0) {
       HoldingsType ht = htList.get (0);
@@ -85,18 +87,16 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
     List<StdyDscrType> sdtList = codeBook.getStdyDscr ();
     StdyDscrType sdt = sdtList.get (0);
 
+    // producer | stdyDscr->citation->prodStmt->producer
     List<CitationType> ctList = sdt.getCitation ();
     if (ctList != null && ctList.size () > 0) {
       CitationType ct1 = ctList.get (0);
-
-      // producer | stdyDscr->citation->prodStmt->producer
       ProdStmtType pst = ct1.getProdStmt ();
       List<ProducerType> prodList = pst.getProducer ();
       if (prodList != null && prodList.size () > 0) {
         ProducerType pt = prodList.get (0);
         cto.setProducer (flatten (pt.getContent ()));
       }
-
     }
 
     List<StdyInfoType> sitList = sdt.getStdyInfo ();
@@ -181,8 +181,77 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
         }
 
       }
-
       cto.setExtra (extra);
+
+    }
+
+    /// FileTransferObjects 
+    List<FileDscrType> fdtList = codeBook.getFileDscr ();
+    for (FileDscrType fdt : fdtList) { 
+
+      FileTransferObject fto = new FileTransferObject ();
+
+      // URL | fileDscr:URI
+      fto.setURL (fdt.getURI ());
+
+      // name | fileDscr->fileTxt->fileName
+      List<FileTxtType> fttList = fdt.getFileTxt ();
+      if (fttList != null && fttList.size () > 0) {
+        FileTxtType ftt = fttList.get (0);
+        FileNameType fnt = ftt.getFileName ();
+        fto.setName (flatten (fnt.getContent ()));
+      }
+
+      // description | fileDscr->notes
+      List<NotesType> ntList = fdt.getNotes ();
+      if (ntList != null && ntList.size () > 0) {
+        NotesType nt = ntList.get (0);
+        fto.setDescription (flatten (nt.getContent ()));
+      }
+
+      fto.setVersion (1);
+
+      /*
+        fto.setDataStoreId (String);
+        fto.setCollectionDataStoreId (String);
+        fto.setExtra (HashMap<String, String>);
+       */
+
+      ftos.add (fto);
+
+    }
+
+    /// VariableTransferObjects
+    List<DataDscrType> ddtList1 = codeBook.getDataDscr ();
+    for (DataDscrType ddt1 : ddtList1) {
+
+      VariableTransferObject vto = new VariableTransferObject ();
+
+      List<VarType> vtList = ddt1.getVar ();
+      if (vtList != null && vtList.size () > 0) {
+ 
+        // name | codeBook->dataDscr->var:name
+        VarType vt = vtList.get (0);
+        vto.setName (vt.getName ());
+
+        // description | codeBook->dataDscr->notes
+        List<NotesType> ntList = vt.getNotes ();
+        if (ntList != null && ntList.size () > 0) {
+          NotesType nt = ntList.get (0);
+          vto.setDescription (flatten (nt.getContent ()));
+        }
+ 
+      }
+
+      vto.setVersion (1);
+
+      /*
+        vto.setDataStoreId (String);
+        vto.setFileDataStoreId(String (String);
+        vto.setExtra (HashMap<String, String>);
+       */
+
+      vtos.add (vto);
 
     }
 
