@@ -58,6 +58,23 @@ public class CodeBookMetadataFormatterImpTest {
 
     }
 
+    @Test
+    public void testFormatACodeBook () throws Exception {
+
+      System.out.println ("Testing format a CodeBook...");
+
+      CodeBookMetadataFormatterImpl cbmfi = new CodeBookMetadataFormatterImpl ();
+      List<MetadataObject> metadataObjects = cbmfi.format (codeBookString.getBytes ());
+      for (MetadataObject mo : metadataObjects) {
+        CollectionTransferObject cto = mo.getCollectionTransferObject ();
+        TestCase.assertTrue ("Returned object is null", cto != null);
+        System.out.println (cto);
+        // TestCase.assertTrue ("CollectionTransferObject.subject has incorrect value ", ((cto.getProducer () != null) && (cto.getProducer ().startsWith ("Louis Harris"))));
+      }
+
+      // @todo add remaining tests
+    }
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Workfile: metadata-ddi.asp $ $Revision: 10 $ $Date: 2/23/04 5:30p $ -->
+<codeBook xsi:schemaLocation="http://www.icpsr.umich.edu/DDI &#xA;          http://www.icpsr.umich.edu/DDI/Version1-3.xsd" xmlns="http://www.icpsr.umich.edu/DDI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<docDscr source="archive">
+<citation>
+<titlStmt source="archive">
+<titl source="archive">Hart/Horatio Poll # 2008-8514: 2008 State of Our Nation's Youth Survey</titl>
+</titlStmt>
+<holdings URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=summary_Link?Archno=USHORT2008-8514"></holdings>
+</citation>
+</docDscr>
+
+<docDscr><citation><titlStmt><titl>Hart/Horatio Poll # 2008-8514: 2008 State of Our Nation's Youth Survey</titl><IDNo agency="handle">hdl:1902.4/USHORT2008-8514</IDNo></titlStmt><distStmt><distrbtr>IQSS Dataverse Network</distrbtr><distDate date="2011-11-08">2011-11-08</distDate></distStmt><verStmt source="DVN"><version date="2011-11-08" type="RELEASED">1</version><verResp>IQSSdvnAdmin</verResp></verStmt><biblCit format="DVN">Horatio Alger Association, 2/6/2009 11:49:28 AM, "Hart/Horatio Poll # 2008-8514: 2008 State of Our Nation's Youth Survey", http://hdl.handle.net/1902.4/USHORT2008-8514 
+Roper Center for Public Opinion Research
+ [Distributor] V1 [Version]</biblCit><holdings URI="http://dvn.iq.harvard.edu/dvn/study?globalId=hdl:1902.4/USHORT2008-8514"/></citation></docDscr>
+<stdyDscr>
+<citation source="archive">
+<titlStmt source="archive">
+<titl source="archive">Hart/Horatio Poll # 2008-8514: 2008 State of Our Nation's Youth Survey</titl>
+<IDNo agency="Roper Center" source="archive">USHORT2008-8514</IDNo>
+</titlStmt>
+<rspStmt source="archive">
+<AuthEnty source="archive">Horatio Alger Association</AuthEnty>
+</rspStmt>
+<prodStmt source="archive">
+<producer source="archive">Peter D. Hart Research Associates</producer>
+<prodDate source="archive">April, 2008</prodDate>
+</prodStmt>
+<distStmt>
+<distrbtr abbr="Roper" affiliation="University of Connecticut" URI="http://www.ropercenter.uconn.edu">
+<ExtLink role="image" URI="http://www.ropercenter.uconn.edu/images/roper_small.jpg" title="logo"></ExtLink>
+           Roper Center for Public Opinion Research
+          <ExtLink URI="http://www.ropercenter.uconn.edu/" title="URL"></ExtLink>
+</distrbtr>
+<contact source="archive" email="rcweb@ropercenter.uconn.edu" URI=""></contact>
+<distDate date="2/6/2009 11:49:28 AM">2/10/2009</distDate>
+</distStmt>
+<biblCit source="archive">
+ HART/HORATIO POLL # 2008-8514: 2008 STATE OF OUR NATION'S YOUTH SURVEY
+ [computer file]. Roper Center for Public Opinion Research Study
+ USHORT2008-8514 Version 2. Peter D. Hart Research Associates
+ [producer], 2008. Storrs, CT: The Roper Center for Public Opinion
+ Research, University of Connecticut [distributor], 2009.
+        </biblCit>
+</citation>
+<stdyInfo>
+<abstract source="archive">
+ This survey covers the following issues and topics: Future of country
+ (1); important issues (1); voter interest and involvement (2);
+ partisanship (1); direction of country (1); global warming (1);
+ immigration (1); news sources (1); schooling (6); attending college
+ (4); career goals and adulthood (6); success in global economy (1);
+ activities (10); family members (1); role model (2); illegal steroids
+ (2); problems for high school students (10); stress (1); online
+ activities (1); rules at home (5); visiting web sites (4); bullying
+ (2); self description (9).
+        </abstract>
+<sumDscr>
+<timePrd>APRIL 21-26, 2008</timePrd>
+<collDate event="start" source="producer">4/21/2008</collDate>
+<collDate event="end" source="producer">4/26/2008</collDate>
+<nation abbr="US">United States</nation>
+<universe source="archive">High school students 13-19 years old</universe>
+<dataKind source="archive">survey data</dataKind>
+</sumDscr>
+</stdyInfo>
+<method>
+<dataColl>
+<timeMeth>cross-section</timeMeth>
+<dataCollector>Peter D. Hart Research Associates</dataCollector>
+<collMode source="archive">telephone</collMode>
+<weight source="archive">
+ This study includes a weight variable as provided by the data producer.
+ For further information please consult the study documentation.
+          </weight>
+</dataColl>
+</method>
+<dataAccs source="archive">
+<setAvail source="archive">
+<accsPlac source="archive" URI="http://www.ropercenter.uconn.edu">Roper Center for Public Opinion Research</accsPlac>
+<fileQnty source="archive">2 data files and corresponding documentation.</fileQnty>
+</setAvail>
+<useStmt source="archive">
+<citReq source="archive">
+ Publications based on Roper Center data collections should acknowledge
+ the data sources by means of bibliographic citations.  To ensure that
+ source attributions are available for use by future social science
+ researchers, citations must appear in footnotes or in reference
+ sections of publications. The bibliographic citation for this data
+ collection is:
+ HART/HORATIO POLL # 2008-8514: 2008 STATE OF OUR NATION'S YOUTH SURVEY
+ [computer file]. Roper Center for Public Opinion Research Study
+ USHORT2008-8514 Version 2. Peter D. Hart Research Associates
+ [producer], 2008. Storrs, CT: The Roper Center for Public Opinion
+ Research, University of Connecticut [distributor], 2009.
+          </citReq>
+<disclaimer source="archive">DATA DISCLAIMER: Files are offered "as is"
+ with no warranty or claim for fitness for any purpose.  In no event
+ shall the Center be liable for any actual, incidental or consequential
+ damages arising from use of these files. </disclaimer>
+</useStmt>
+</dataAccs>
+</stdyDscr>
+<fileDscr source="archive" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=68776&amp;ft=2&amp;df=3&amp;fs=336036&amp;sid=USHORT2008-8514">
+<fileTxt source="archive">
+<fileName source="archive">h8514.por</fileName>
+<dimensns source="archive">
+<caseQnty source="archive">1006</caseQnty>
+<varQnty source="archive">approx. 138</varQnty>
+</dimensns>
+</fileTxt>
+</fileDscr>
+<fileDscr source="archive" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=68775&amp;ft=2&amp;df=1&amp;fs=188122&amp;sid=USHORT2008-8514">
+<fileTxt source="archive">
+<fileName source="archive">h8514.dat</fileName>
+<dimensns source="archive">
+<caseQnty source="archive">1006</caseQnty>
+<varQnty source="archive">approx. 138</varQnty>
+<logRecL source="archive">185</logRecL>
+<recPrCas source="archive">1</recPrCas>
+<recNumTot source="archive">1006</recNumTot>
+</dimensns>
+</fileTxt>
+</fileDscr>
+<otherMat level="study" type="other" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=68774&amp;ft=1&amp;df=8&amp;fs=177795&amp;sid=USHORT2008-8514">
+<labl>ushort2008-8514.pdf</labl>
+<notes source="producer">Documentation, PDF</notes>
+</otherMat>
+<otherMat level="study" type="other" URI="http://www.ropercenter.uconn.edu/cgi-bin/hsrun.exe/roperweb/Catalog40/Catalog40.htx;start=filedownload?fi=68777&amp;ft=1&amp;df=9&amp;fs=245248&amp;sid=USHORT2008-8514">
+<labl>ushort2008-8514.doc</labl>
+<notes source="producer">Documentation, Word</notes>
+</otherMat>
+</codeBook>
+
