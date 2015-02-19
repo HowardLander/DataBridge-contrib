@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codeBook xmlns="http://www.icpsr.umich.edu/DDI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.icpsr.umich.edu/DDI http://www.icpsr.umich.edu/DDI/Version2-0.xsd" version="2.0"><docDscr><citation><titlStmt><titl>National Governor’s Association Center for Best Practices</titl><IDNo agency="handle">hdl:1902.1/13829</IDNo></titlStmt><distStmt><distrbtr>IQSS Dataverse Network</distrbtr><distDate date="2011-03-09">2011-03-09</distDate></distStmt><verStmt source="DVN"><version date="2011-03-09" type="RELEASED">2</version><verResp>mchpolicy</verResp></verStmt><verStmt source="DVN"><version date="2009-11-01" type="ARCHIVED">1</version><verResp>mchpolicy</verResp><notes type="DVN:VERSION_NOTE" subject="Version Note">Initial version</notes><notes type="DVN:ARCHIVE_NOTE" subject="Archive Note">Replaced by version 2</notes><notes type="DVN:ARCHIVE_DATE" subject="Archive Date">2011-03-09</notes></verStmt><biblCit format="DVN">"National Governor’s Association Center for Best Practices", http://hdl.handle.net/1902.1/13829 V2 [Version]</biblCit><holdings URI="http://dvn.iq.harvard.edu/dvn/study?globalId=hdl:1902.1/13829"/></citation></docDscr>
+<docDscr><citation><titlStmt><titl>National Governor’s Association Center for Best Practices</titl><IDNo agency="handle">hdl:1902.1/13829</IDNo></titlStmt><distStmt><distrbtr>Odum Institute Dataverse Network</distrbtr><distDate date="2014-12-11">2014-12-11</distDate></distStmt><verStmt source="DVN"><version date="2014-12-11" type="RELEASED">2</version><verResp>networkAdmin</verResp><notes type="DVN:VERSION_NOTE" subject="Version Note">Initial version</notes></verStmt><biblCit format="DVN">"National Governor’s Association Center for Best Practices", http://hdl.handle.net/1902.1/13829 V2 [Version]</biblCit><holdings URI="http://irss-arc1/dvn/study?globalId=hdl:1902.1/13829"/></citation></docDscr>
+<stdyDscr><citation><titlStmt><titl>National Governor’s Association Center for Best Practices</titl><subTitl>National Governor's Association</subTitl><IDNo agency="handle">hdl:1902.1/13829</IDNo></titlStmt><prodStmt><producer>Click here to access data from site<ExtLink URI="http://www.nga.org/portal/site/nga/menuitem.50aeae5ff70b817ae8ebb856a11010a0/ "/></producer></prodStmt><distStmt><depDate date="2009-11-01">2009-11-01</depDate></distStmt><verStmt source="DVN"><version date="2011-03-09" type="RELEASED">2</version></verStmt></citation><stdyInfo><subject><keyword vocab="link" vocabURI="http://www.nga.org/portal/site/nga/menuitem.b14a675ba7f89cf9e8ebb856a11010a0">National Governor's Association</keyword><keyword>education</keyword><keyword>environment</keyword><keyword>energy</keyword><keyword>natural resources</keyword><keyword>homeland security</keyword><keyword>social programs</keyword><keyword>economic programs</keyword><keyword>workforce programs</keyword><keyword>childhood obesity</keyword><keyword>poverty</keyword><keyword>school dropout</keyword><keyword>literacy</keyword><keyword>No Child Left Behind</keyword><keyword>NCLB</keyword><keyword>American Recovery and Reinvestment Act</keyword><keyword>ARRA</keyword><keyword>homelessness</keyword><keyword>foreclosures</keyword><keyword>disaster response</keyword><keyword>foster care</keyword><keyword>economic development</keyword><keyword>welfare reform</keyword></subject><abstract date="2011-03">Users can view and download publications regarding public policy recommendations.  Topics include: education; environment, energy, and natural resources; health; homeland security and technology; and social, economic, and workforce programs. 
+
+&lt;p&gt;&lt;b&gt;Background&lt;/b&gt;&lt;/p&gt;
+The National Center for Best Practices of the National Governor’s Association evaluates public policy innovations implemented by states to form recommendations for public policy.  The Center produces publications pertaining to education; environment, energy, and natural resources; health; homeland security and technology; and social, economic, and workforce programs.  
+
+&lt;p&gt;&lt;b&gt;User Functionality&lt;/b&gt;&lt;/p&gt;
+Users can view webcasts and presentations and download publications pertaining to education, environment, health, homeland security, and social programs. 
+
+&lt;p&gt;&lt;b&gt;Data Notes&lt;/b&gt;&lt;/p&gt;
+Data sources are noted with each publication.  
+</abstract><sumDscr><geogUnit>U.S. national, U.S. state</geogUnit></sumDscr></stdyInfo><dataAccs><notes level="dvn" type="DVN:TOU" subject="Terms Of Use">&lt;b&gt;IQSS Dataverse Network Terms and Conditions&lt;/b&gt;
+
+&lt;p&gt;By downloading these Materials, I agree to the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I will not use the Materials to
+&lt;ol type="a"&gt;
+&lt;li&gt;obtain information that could directly or indirectly identify subjects.&lt;/li&gt;
+&lt;li&gt;produce links among the Distributor's datasets or among the Distributor's data and other datasets that could identify individuals or organizations.&lt;/li&gt;
+&lt;li&gt;obtain information about, or further contact with, subjects known to me except where the use and/or release of such identifying information has no potential for constituting an unwarranted invasion of privacy and/or breach of confidentiality.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;I agree not to download any Materials where prohibited by applicable law.&lt;/li&gt;
+&lt;li&gt;I agree not to use the Materials in any way prohibited by applicable law.&lt;/li&gt;
+&lt;li&gt;I agree that any books, articles, conference papers, theses, dissertations, reports, or other publications that I create which employ data reference the bibliographic citation accompanying this data. These citations include the data authors, data identifier, and other information accord with the Recommended Standard (&lt;strong&gt;http://thedata.org/citation/standard&lt;/strong&gt;) for social science data.&lt;/li&gt;
+&lt;li&gt;THE DISTRIBUTOR MAKES NO WARRANTIES, EXPRESS OR IMPLIED, BY OPERATION OF LAW OR OTHERWISE, REGARDING OR RELATING TO THE DATASET&lt;/li&gt;
+&lt;/ol&gt;
+</notes></dataAccs></stdyDscr></codeBook>

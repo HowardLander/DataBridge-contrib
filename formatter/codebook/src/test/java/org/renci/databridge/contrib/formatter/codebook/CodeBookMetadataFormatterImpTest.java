@@ -29,7 +29,9 @@ public class CodeBookMetadataFormatterImpTest {
     public static void setup () throws Exception {
 
       StringWriter sw = new StringWriter ();
-      try (InputStream is = CodeBookMetadataFormatterImpTest.class.getResourceAsStream ("/45713.xml")) {
+      // try (InputStream is = CodeBookMetadataFormatterImpTest.class.getResourceAsStream ("/45713.xml")) {
+      // try (InputStream is = CodeBookMetadataFormatterImpTest.class.getResourceAsStream ("/51412.xml")) {
+      try (InputStream is = CodeBookMetadataFormatterImpTest.class.getResourceAsStream ("/67784.xml")) {
         int c;
         while ((c = is.read ()) != -1 ) {
           sw.write (c);
