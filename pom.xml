@@ -12,6 +12,7 @@
     <module>similarity</module>
     <module>formatter</module>
     <module>sna</module>
+    <module>example</module>
   </modules>
 
   <properties>
