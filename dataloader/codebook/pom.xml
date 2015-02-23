@@ -1,0 +1,29 @@
+<project>
+
+    <parent>
+       <groupId>org.renci.databridge.contrib.dataloader</groupId>
+       <artifactId>dataloader</artifactId>
+       <version>1.0-BETA</version>
+       <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.renci.databridge.contrib.dataloader.codebook</groupId>
+    <artifactId>codebook</artifactId>
+    <name>DataBridge Contrib Dataloader: Codebook</name>
+    <version>1.0-BETA</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.renci.databridge.persistence</groupId>
+            <artifactId>databridge-persistence</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.renci.databridge.util</groupId>
+            <artifactId>databridge-util</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
+    </dependencies>
+
+</project>

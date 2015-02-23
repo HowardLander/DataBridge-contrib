@@ -16,7 +16,7 @@
   <name>DataBridge Contrib Example</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>example</module>
+    <module>messagesend</module>
   </modules>
 
 <repositories>
