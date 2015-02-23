@@ -19,4 +19,11 @@
     <module>example</module>
   </modules>
 
+<repositories>
+    <repository>
+      <id>DataBridge</id>
+      <url>http://maven.renci.org/mvn-repo</url>
+    </repository>
+ </repositories>
+
 </project>
