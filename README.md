@@ -1,1 +1,1 @@
-A place for contributed work such as formatters, comparators, etc
+A place for contributed work such as formatters, comparators, etc.

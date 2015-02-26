@@ -11,23 +11,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.databridge.contrib.dataloader</groupId>
   <artifactId>dataloader</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <version>1.0-BETA</version>
   <name>DataBridge Contrib DataLoader</name>
-  <url>http://maven.apache.org</url>
-  <modules>
-    <module>codebook</module>
-  </modules>
 
  <dependencies>
     <dependency>
       <groupId>org.renci.databridge.util</groupId>
       <artifactId>databridge-util</artifactId>
-      <version>1.0-BETA</version>
-    </dependency>
-    <dependency>
-      <groupId>org.renci.databridge.formatter</groupId>
-      <artifactId>databridge-formatter</artifactId>
       <version>1.0-BETA</version>
     </dependency>
     <dependency>
