@@ -15,7 +15,7 @@ import com.rabbitmq.client.*;
  *
  * @author Lander
  */
-public class MockSimilarity implements RelevanceInterface {
+public class MockSimilarity implements SimilarityProcessor {
 
     public double compareCollections (CollectionTransferObject collection1,
                                       CollectionTransferObject collection2) {

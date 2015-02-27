@@ -15,7 +15,7 @@ import org.renci.databridge.persistence.network.*;
  *
  * @author Lander
  */
-public class MockSNA implements SNAInterface {
+public class MockSNA implements NetworkProcessor {
 
     public HashMap<String, String[]> processNetwork (Iterator<NetworkDyadTransferObject> theDyads, 
                                                      String params) {
