@@ -15,10 +15,10 @@ import org.renci.databridge.persistence.metadata.*;
 //Each data element will have number of attributes, (d), followed by the attribute list
 
 /**
- * An abstract class that allows for easy implementation of various similarity measurements.
+ * An class that allows for easy implementation of various similarity measurements.
  * @author Nerketur
  */
-public abstract class Measure implements SimilarityProcessor {
+public class Measure implements SimilarityProcessor {
     /**
      * data the original collection of data
      */
@@ -35,17 +35,17 @@ public abstract class Measure implements SimilarityProcessor {
      * This initializes the static variables of the Measure class
      * @param data data to use in initializing the measure
      */
-    public Measure(Collection<Collection<Collection<String>>> data) {
-        this.data = data; // original data
-        this.fullData = new ArrayList<>(); // all data from all attributes
-        Iterator<Collection<Collection<String>>> itSur = data.iterator();
-        while (itSur.hasNext()) {
-            Iterator<Collection<String>> itAttr = itSur.next().iterator();
-            while (itAttr.hasNext()) {
-                fullData.addAll(itAttr.next());
-            }
-        }
-    }
+//    public Measure(Collection<Collection<Collection<String>>> data) {
+//        this.data = data; // original data
+//        this.fullData = new ArrayList<>(); // all data from all attributes
+//        Iterator<Collection<Collection<String>>> itSur = data.iterator();
+//        while (itSur.hasNext()) {
+//            Iterator<Collection<String>> itAttr = itSur.next().iterator();
+//            while (itAttr.hasNext()) {
+//                fullData.addAll(itAttr.next());
+//            }
+//        }
+//    }
 
     /**
      * This computes the similarity matrix for every survey compared with every other survey, including itself.
@@ -204,9 +204,13 @@ public abstract class Measure implements SimilarityProcessor {
         return res/min;
     }
     
-    protected abstract double in(Object dummy);
+    protected double in(Object dummy) {
+        return 1;
+    }
     
-    protected abstract double notIn(Object dummy);
+    protected double notIn(Object dummy) {
+        return 0;
+    }
 
     //protected abstract double mostMatch(int xLen, int yLen);
 
