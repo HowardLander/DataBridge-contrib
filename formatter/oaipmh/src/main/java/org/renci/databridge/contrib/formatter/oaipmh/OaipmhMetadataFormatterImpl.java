@@ -42,7 +42,14 @@ public class OaipmhMetadataFormatterImpl extends JaxbMetadataFormatter {
   public List<MetadataObject> format (byte [] bytes) throws FormatterException {
 
     String metadataString = new String (bytes);
-    this.logger.log (Level.FINER, "bytes: '" + metadataString + "'");
+    if (this.logger.isLoggable (Level.FINER) && metadataString != null) {
+      String stringToLog = metadataString;
+      // truncate log string if too long
+      if (stringToLog.length () > 2048) {
+        stringToLog = metadataString.substring (2048) + " [truncated to log]";
+      }
+      this.logger.log (Level.FINER, "bytes: '" + stringToLog + "'");
+    }
     OAIPMHtype ot = unmarshal (metadataString, OAIPMHtype.class, OAIPMHtype.class, CodeBook.class);
 
     this.logger.log (Level.FINER, "Processing an OAIPMHtype.");
