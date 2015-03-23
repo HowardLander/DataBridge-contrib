@@ -27,7 +27,7 @@ public class DataLoader {
     String nameSpace = args [2];
     String inputURI = args [3];
 
-    String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders (className,  nameSpace, inputURI);
+    String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders (className, nameSpace, inputURI);
     System.out.println ("headers are: " + headers);
     AMQPMessage theMessage = new AMQPMessage ();
     ac.publishMessage (theMessage, headers, true);
