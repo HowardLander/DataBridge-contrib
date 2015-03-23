@@ -11,7 +11,7 @@ Arguments:
 
 Example:
 
-mvn exec:java -Dexec.mainClass=org.renci.databridge.contrib.dataloader.DataLoader -Dexec.args="./DataBridge.conf org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl test_ingest_2 file:///path/to/file"
+cd to databridge-contrib/dataloader/
 
-
+mvn clean compile exec:java -Dexec.mainClass=org.renci.databridge.contrib.dataloader.DataLoader -Dexec.args="./DataBridge.conf org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl test_ingest_2 file:///path/to/file"
 

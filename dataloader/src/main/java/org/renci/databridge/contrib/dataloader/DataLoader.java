@@ -23,9 +23,7 @@ public class DataLoader {
     }
 
     AMQPComms ac = new AMQPComms (args [0]);
-
     String className = args [1];
-    String methodName = "METHOD"; // not acutally needed but "" causes error
     String nameSpace = args [2];
     String inputURI = args [3];
 
