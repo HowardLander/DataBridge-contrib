@@ -31,6 +31,7 @@ public class DataLoader {
     System.out.println ("headers are: " + headers);
     AMQPMessage theMessage = new AMQPMessage ();
     ac.publishMessage (theMessage, headers, true);
+    ac.shutdownConnection ();
 
   }
 }
