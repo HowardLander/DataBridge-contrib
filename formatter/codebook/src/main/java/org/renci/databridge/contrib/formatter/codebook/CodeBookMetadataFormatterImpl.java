@@ -35,6 +35,11 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
 
   private Logger logger = Logger.getLogger ("org.renci.databridge.formatter.codebook");
 
+  public CodeBookMetadataFormatterImpl () {
+    // logger may be replaced later if parent calls superclass setLogger method
+    setLogger (Logger.getLogger ("org.renci.databridge.contrib.formatter.codebook"));
+  }
+
   @Override
   public List<MetadataObject> format (byte [] bytes) throws FormatterException {
 
