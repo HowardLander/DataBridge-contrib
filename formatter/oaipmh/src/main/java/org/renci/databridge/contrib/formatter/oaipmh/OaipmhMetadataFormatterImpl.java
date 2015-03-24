@@ -36,11 +36,13 @@ import org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatter
  */
 public class OaipmhMetadataFormatterImpl extends JaxbMetadataFormatter {
 
-  private Logger logger = Logger.getLogger ("org.renci.databridge.formatter.oaipmh");
+  public OaipmhMetadataFormatterImpl () {
+    // logger may be replaced later if parent calls superclass setLogger method
+    setLogger (Logger.getLogger ("org.renci.databridge.contrib.formatter.oaipmh"));
+  }
 
   @Override
   public List<MetadataObject> format (byte [] bytes) throws FormatterException {
-
     String metadataString = new String (bytes);
     if (this.logger.isLoggable (Level.FINER) && metadataString != null) {
       String stringToLog = metadataString;
@@ -48,11 +50,12 @@ public class OaipmhMetadataFormatterImpl extends JaxbMetadataFormatter {
       if (stringToLog.length () > 2048) {
         stringToLog = metadataString.substring (2048) + " [truncated to log]";
       }
-      this.logger.log (Level.FINER, "bytes: '" + stringToLog + "'");
+      this.logger.log (Level.FINE, "bytes: '" + stringToLog + "'");
     }
+
     OAIPMHtype ot = unmarshal (metadataString, OAIPMHtype.class, OAIPMHtype.class, CodeBook.class);
 
-    this.logger.log (Level.FINER, "Processing an OAIPMHtype.");
+    this.logger.log (Level.FINE, "Processing an OAIPMHtype.");
     List<MetadataObject> metadataObjects = new ArrayList<MetadataObject> ();
     extractOAIPMHtype (ot, metadataObjects);
 
@@ -72,12 +75,13 @@ public class OaipmhMetadataFormatterImpl extends JaxbMetadataFormatter {
     try {     
       rtList = lrt.getRecord ();
     } catch (NullPointerException npe) {
-      this.logger.log (Level.FINER, "Got an NPE, so there is probably no OAIPMH content object in the input document.");
+      this.logger.log (Level.FINE, "Got an NPE, so there is probably no OAIPMH content object in the input document.");
       return;
     }
 
     // for delegating codebook extration
     CodeBookMetadataFormatterImpl cbmfi = new CodeBookMetadataFormatterImpl ();
+    cbmfi.setLogger (this.logger);
 
     Iterator<RecordType> i = rtList.iterator ();
     while (i.hasNext ()) {
