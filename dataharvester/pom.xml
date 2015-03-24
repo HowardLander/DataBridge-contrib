@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.renci.databridge.contrib</groupId>
+    <artifactId>dataharvester</artifactId>
+    <version>1.0-BETA</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    
+    
+    <repositories>
+
+    <repository>
+        <id>dvn.private</id>
+        <name>Local repository for jars not available from major maven repositories </name>
+        <url>file://${project.basedir}/local_lib</url>
+    </repository>
+        
+    </repositories>
+    
+    
+    <dependencies>
+        
+        
+<dependency>
+	<groupId>xalan</groupId>
+	<artifactId>xalan</artifactId>
+	<version>2.7.2</version>
+</dependency>
+
+        
+        
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.oclc</groupId>
+            <artifactId>harvester2</artifactId>
+            <version>0.1.12</version>
+            <scope>compile</scope>
+        </dependency>
+       
+        
+        
+    </dependencies>
+    
+    <build>
+        <finalName>dataharvester</finalName>
+        
+        <resources>
+<!--            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+		    <include>*.properties</include>
+		    <include>**/mime.types</include>
+                    <include>**/*.R</include>
+                </includes>
+            </resource>-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+        
+        
+        
+        <plugins>
+            
+            
+            
+            
+
+            <!-- Maven Shade Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <!-- Run shade goal on package phase -->
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            
+      <shadedArtifactAttached>true</shadedArtifactAttached>
+      <shadedClassifierName></shadedClassifierName>
+                            
+                            <transformers>
+                                <!-- add Main-Class to manifest file -->
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.renci.databridge.contrib.dataharvester.DataHarvester</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            
+            
+            
+        </plugins>
+    </build>
+    
+    
+</project>
