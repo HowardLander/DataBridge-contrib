@@ -24,6 +24,9 @@ import org.renci.databridge.persistence.metadata.CollectionTransferObject;
 import org.renci.databridge.persistence.metadata.FileTransferObject;
 import org.renci.databridge.persistence.metadata.VariableTransferObject;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * MetadataFormatter implementation for DDI-Lite CodeBook object.
  *
@@ -53,6 +56,11 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
 
     return metadataObjects;
 
+  }
+
+  @Override
+  protected File getValidationSchema () throws IOException {
+    return null;
   }
  
   /**
@@ -97,10 +105,14 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
     if (ctList != null && ctList.size () > 0) {
       CitationType ct1 = ctList.get (0);
       ProdStmtType pst = ct1.getProdStmt ();
-      List<ProducerType> prodList = pst.getProducer ();
-      if (prodList != null && prodList.size () > 0) {
-        ProducerType pt = prodList.get (0);
-        cto.setProducer (flatten (pt.getContent ()));
+      if (pst != null) {
+        List<ProducerType> prodList = pst.getProducer ();
+        if (prodList != null && prodList.size () > 0) {
+          ProducerType pt = prodList.get (0);
+          cto.setProducer (flatten (pt.getContent ()));
+        }
+      } else {
+        logger.log (Level.FINE, "Omitting <producer> because element is missing.");
       }
     }
 
