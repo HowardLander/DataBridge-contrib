@@ -47,7 +47,6 @@ public class CodeBookMetadataFormatterImpl extends JaxbMetadataFormatter {
   public List<MetadataObject> format (byte [] bytes) throws FormatterException {
 
     String metadataString = new String (bytes);
-    this.logger.log (Level.FINER, "bytes: '" + metadataString + "'");
     CodeBook cb = unmarshal (metadataString, CodeBook.class, CodeBook.class);
 
     List<MetadataObject> metadataObjects = new ArrayList<MetadataObject> ();
