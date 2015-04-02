@@ -1,0 +1,24 @@
+<project>
+
+    <parent>
+       <groupId>org.renci.databridge.contrib.sna</groupId>
+       <artifactId>sna</artifactId>
+       <version>1.0-BETA</version>
+       <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.renci.databridge.contrib.sna</groupId>
+    <artifactId>ncat-sna</artifactId>
+    <name>DataBridge Contrib SNA: NCAT</name>
+    <version>1.0-BETA</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.renci.databridge.persistence</groupId>
+            <artifactId>databridge-persistence</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
+    </dependencies>
+
+</project>
