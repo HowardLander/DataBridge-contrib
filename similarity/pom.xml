@@ -17,6 +17,13 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>mocksimilarity</module>
+    <module>ncat</module>
   </modules>
+<repositories>
+    <repository>
+      <id>DataBridge</id>
+      <url>http://maven.renci.org/mvn-repo</url>
+    </repository>
+ </repositories>
 
 </project>
