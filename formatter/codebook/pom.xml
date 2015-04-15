@@ -42,7 +42,8 @@
                 </executions>
                 <configuration>
                     <packageName>org.renci.databridge.contrib.formatter.codebook</packageName> <!-- The name of the generated source package -->
-                    <verbose>true</verbose> 
+                    <verbose>false</verbose> 
+                    <quiet>true</quiet>
                </configuration>
              </plugin>
         </plugins>
