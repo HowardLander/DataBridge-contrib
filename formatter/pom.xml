@@ -32,5 +32,11 @@
       <version>1.0-BETA</version>
     </dependency>
   </dependencies>
+<repositories>
+    <repository>
+      <id>DataBridge</id>
+      <url>http://maven.renci.org/mvn-repo</url>
+    </repository>
+ </repositories>
 
 </project>
