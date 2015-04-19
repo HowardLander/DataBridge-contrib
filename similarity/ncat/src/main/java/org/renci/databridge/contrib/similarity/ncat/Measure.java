@@ -3,7 +3,6 @@ package org.renci.databridge.contrib.similarity.ncat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.renci.databridge.persistence.metadata.*;
@@ -66,9 +65,17 @@ public class Measure implements SimilarityProcessor {
         return ans;
     }
 
+    /**
+     * This is way one.  convert the object into our way of dealing with things.
+     * Way two will be completed later
+     * 
+     * @param collection the collection transfer object
+     * @return 
+     */
     private Collection<String> parseSumDscr(CollectionTransferObject collection) {
         //survey1.add(collection1.);
         //sumDscr assumes "key: value" for doing things the same way as the code
+        //TODO: make it so we don't have to convert
         Iterator<String> it = collection.getExtra().keySet().iterator();
         Collection<String> sumDscr = new ArrayList<>();
         while (it.hasNext()) {
@@ -82,7 +89,6 @@ public class Measure implements SimilarityProcessor {
     }
     
     /**
-     * This is way one.  convert the object into our way of dealing with things.
      * @param collection1 survey 1
      * @param collection2 survey 2
      * @return 
@@ -205,11 +211,11 @@ public class Measure implements SimilarityProcessor {
     }
     
     protected double in(Object dummy) {
-        return 1;
+        throw new UnsupportedOperationException("Please override this method with your own implementation");
     }
     
     protected double notIn(Object dummy) {
-        return 0;
+        throw new UnsupportedOperationException("Please override this method with your own implementation");
     }
 
     //protected abstract double mostMatch(int xLen, int yLen);
