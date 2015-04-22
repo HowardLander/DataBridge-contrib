@@ -88,11 +88,26 @@ public class Measure implements SimilarityProcessor {
         return sumDscr;
     }
     
+    protected void fillData(Collection<Collection<String>> survey1, Collection<Collection<String>> survey2) {
+        data = new ArrayList<>();
+        data.add(survey1);
+        data.add(survey2);
+        this.fullData = new ArrayList<>(); // all data from all attributes (could fill as they come in as well)
+        Iterator<Collection<Collection<String>>> itSur = data.iterator();
+        while (itSur.hasNext()) {
+            Iterator<Collection<String>> itAttr = itSur.next().iterator();
+            while (itAttr.hasNext()) {
+                fullData.addAll(itAttr.next());
+            }
+        }
+    }
+    
     /**
      * @param collection1 survey 1
      * @param collection2 survey 2
      * @return 
      */
+    @Override
     public double compareCollections (CollectionTransferObject collection1,
                                       CollectionTransferObject collection2) {
         
@@ -104,6 +119,9 @@ public class Measure implements SimilarityProcessor {
         survey1.add(parseSumDscr(collection1));
         survey2.add(collection2.getKeywords());
         survey2.add(parseSumDscr(collection2));
+        fillData(survey1, survey2); // This is not needed for all measures, but IS needed for the more complex ones.
+        //TODO: only have it fill data if needed by the measurement.
+        // bit of a complicated task, 
         return this.computeSim(survey1, survey2);
     }
     
@@ -220,6 +238,14 @@ public class Measure implements SimilarityProcessor {
 
     //protected abstract double mostMatch(int xLen, int yLen);
 
+    /**
+     * This is used to find the weight for each group of attributes.  by default it returns 1/(totAttributes)
+     * This value is important because we add them together to get the final result, which we expect to be
+     * between 0 and 1.  Override this if the weight is incorrect for a particular algorithm.
+     * @param Xk attribute list for survey 1
+     * @param Yk attribute list for survey 2
+     * @return the weight for each attribute list.  In this default case, returns 1/(number of attribute lists)
+     */
     protected double weight(Collection<String> Xk, Collection<String> Yk) {
         return 1.0 / attrs.size();
     }
