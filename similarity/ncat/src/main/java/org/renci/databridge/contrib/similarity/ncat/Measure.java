@@ -122,7 +122,13 @@ public class Measure implements SimilarityProcessor {
         fillData(survey1, survey2); // This is not needed for all measures, but IS needed for the more complex ones.
         //TODO: only have it fill data if needed by the measurement.
         // bit of a complicated task, 
-        return this.computeSim(survey1, survey2);
+
+        double val = this.computeSim(survey1, survey2);
+        if (Double.isNaN(val)) {
+          val = 0;
+        }
+        return val;
+
     }
     
     
