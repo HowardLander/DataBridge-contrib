@@ -147,7 +147,7 @@ public class Measure implements SimilarityProcessor {
 //            }
 //        }
         attrs = new ArrayList<>(); // hashset
-        ArrayList<ArrayList<String>> fullAttrs = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> fullAttrs = new ArrayList<>();
         HashSet<String> comb;
         ArrayList<String> fullComb; // 
         Iterator<Collection<String>> itX = X.iterator();
@@ -155,11 +155,11 @@ public class Measure implements SimilarityProcessor {
         while (itX.hasNext()) {
             Collection<String> valX = itX.next();
             Collection<String> valY = itY.next();
-            comb = new HashSet<String>();
+            comb = new HashSet<>();
             comb.addAll(valX);
             comb.addAll(valY);
             attrs.add(comb);
-            fullComb = new ArrayList<String>();
+            fullComb = new ArrayList<>();
             fullComb.addAll(valX);
             fullComb.addAll(valY);
             fullAttrs.add(fullComb);
@@ -173,7 +173,7 @@ public class Measure implements SimilarityProcessor {
             fullValues = itF.next();
             Collection<String> Xk = itX.next();
             Collection<String> Yk = itY.next();
-            ans += computeSimK(Xk, Yk);
+            ans += computeSimK(Xk, Yk) * weight(Xk, Yk);
         }
         return ans;
     }
@@ -199,11 +199,8 @@ public class Measure implements SimilarityProcessor {
                 s.add(xk);
                 s.add(yk);
                 //Collection[] arr = new Collection[] {Xk, Yk, s};
-                if (xk.equalsIgnoreCase(yk))
-                    ans[i][j] = weight(Xk, Yk) * in(s);
-                else {
-                    ans[i][j] = weight(Xk, Yk) * notIn(s);
-                }
+                ans[i][j] = computeWordSim(xk, yk, s);
+                //assert(ans[i][j] <= 1);
                 j++;
             }
             i++;
@@ -256,4 +253,10 @@ public class Measure implements SimilarityProcessor {
         return 1.0 / attrs.size();
     }
 
+    protected double computeWordSim(String xk, String yk, ArrayList<String> s) {
+        if (xk.equalsIgnoreCase(yk))
+            return in(s);
+        else
+            return notIn(s);
+    }
 }

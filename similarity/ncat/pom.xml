@@ -19,6 +19,16 @@
             <artifactId>databridge-persistence</artifactId>
             <version>1.0-BETA</version>
         </dependency>
+        <dependency>
+            <groupId>edu.cmu.lti</groupId>
+            <artifactId>ws4j</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
-
+    <repositories>
+      <repository>
+	<id>WordNet Search for Java</id>
+	<url>http://cogcomp.cs.illinois.edu/m2repo/</url>
+      </repository>
+    </repositories>
 </project>
