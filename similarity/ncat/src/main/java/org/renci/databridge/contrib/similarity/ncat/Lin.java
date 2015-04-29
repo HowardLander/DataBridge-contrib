@@ -18,6 +18,8 @@ public class Lin extends Measure {
         
     @Override
     protected double computeWordSim(String xk, String yk, ArrayList<String> s) {
+        if (xk.equals(yk))
+            return 1.0;
         edu.cmu.lti.ws4j.impl.Lin m = new edu.cmu.lti.ws4j.impl.Lin(db);        
         return m.calcRelatednessOfWords(xk, yk);
     }
