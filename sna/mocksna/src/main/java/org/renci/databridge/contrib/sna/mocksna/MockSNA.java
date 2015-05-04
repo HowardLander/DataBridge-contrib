@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 import org.renci.databridge.persistence.metadata.*;
 import org.renci.databridge.persistence.network.*;
+import org.la4j.*;
 
 /**
  *
@@ -21,6 +22,8 @@ public class MockSNA implements NetworkProcessor {
                                                      String params) {
 
         HashMap<String, Boolean> nodeList = new HashMap<String, Boolean>();
+        org.la4j.matrix.sparse.CRSMatrix theMatrix = new org.la4j.matrix.sparse.CRSMatrix();
+
         while (theDyads.hasNext()) {
             NetworkDyadTransferObject thisDyad = theDyads.next();
 
@@ -31,7 +34,14 @@ public class MockSNA implements NetworkProcessor {
             if (false == nodeList.containsKey(thisDyad.getNode2DataStoreId())) {
                 nodeList.put(thisDyad.getNode2DataStoreId(), new Boolean("true"));
             }
+
+            if (thisDyad.getNode1DataStoreId() != null && thisDyad.getNode2DataStoreId() != null) {
+              theMatrix.set(thisDyad.getI(), thisDyad.getJ(), thisDyad.getSimilarity());
+            }
         }    
+
+        System.out.println("\tMatrix: ");
+        System.out.println(theMatrix.toString());
 
         HashMap<String, String[]> returnMap = new HashMap<String, String[]>();
         int clusterCounter =  0;
