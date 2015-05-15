@@ -11,7 +11,7 @@ public class InsertDVNMetadata {
 
       AMQPComms ac = new AMQPComms (args[0]);
       // className (get from shoffner), nameSpace (your nameSpace) file)
-      String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders(args[1], args[2], args[3]);
+      String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders(args[1], args[2], args[3], args[4]);
       AMQPMessage theMessage = new AMQPMessage ();
       ac.publishMessage(theMessage, headers, true);
 

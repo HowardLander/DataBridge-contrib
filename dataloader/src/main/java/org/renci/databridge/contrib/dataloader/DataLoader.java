@@ -18,16 +18,17 @@ public class DataLoader {
       System.out.println ("arg " + i + ": " + args [i]);
     }
 
-    if (args.length != 4) {
-      throw new RuntimeException ("Usage: DataLoader <abs_path_to_AMQPComms_props_file, <FQCN_of_formatter_impl> <name_space>, <inputURI>");
+    if (args.length != 5) {
+      throw new RuntimeException ("Usage: DataLoader <abs_path_to_AMQPComms_props_file, <FQCN_of_formatter_impl> <name_space> <true_false_should_Processed.Metadata.To.MetadataDB_message_be_fired_by_ingester> <inputURI>");
     }
 
     AMQPComms ac = new AMQPComms (args [0]);
     String className = args [1];
     String nameSpace = args [2];
-    String inputURI = args [3];
+    String fireEvent = args [3];
+    String inputURI = args [4];
 
-    String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders (className, nameSpace, inputURI);
+    String headers = InsertMetadataJavaURIMetadataDB.getSendHeaders (className, nameSpace, fireEvent, inputURI);
     System.out.println ("headers are: " + headers);
     AMQPMessage theMessage = new AMQPMessage ();
     ac.publishMessage (theMessage, headers, true);

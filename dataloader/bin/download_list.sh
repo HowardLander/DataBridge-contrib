@@ -12,7 +12,7 @@ amqpconffile=$2
 namespace=$3
 absdldir=$4
 classpath=`cat classpath.txt`
-javabase="-Djava.util.logging.config.file=logging.properties -cp $classpath org.renci.databridge.contrib.dataloader.DataLoader "$amqpconffile" org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl "$namespace" file://"
+javabase="-Djava.util.logging.config.file=logging.properties -cp $classpath org.renci.databridge.contrib.dataloader.DataLoader "$amqpconffile" org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl "$namespace" false file://"
 
 while read url
 do
