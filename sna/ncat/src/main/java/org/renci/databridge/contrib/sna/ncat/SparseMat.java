@@ -17,20 +17,34 @@ public class SparseMat {
 
     HashMap<String, HashMap<String, Double>> graph;
     HashSet<String> nodes;
+    private final HashMap<Integer, String> idx2node;
+    //private final HashMap<String, Integer> node2idx;
 
     public SparseMat() {
         this.graph = new HashMap<>();
+        this.idx2node = new HashMap<>();
+        //this.node2idx = new HashMap<>();
         this.nodes = new HashSet<>();
     }
     
     void addEleUndir(String node1, String node2, double val) {
         //Undirected is directed both ways
-        addEleDir(node1, node2, val);
-        addEleDir(node2, node1, val);
+        addEleDir(node1, node2, val, -1, -1);
+        addEleDir(node2, node1, val, -1, -1);
     }
     void addEleDir(String node1, String node2, double val) {
+        addEleDir(node1, node2, val, -1, -1);
+    }
+
+    void addEleDir(String node1, String node2, double val, int i, int j) {
         nodes.add(node1);
         nodes.add(node2);
+        if (i >= 0 || j >= 0) {
+            idx2node.put(i, node1);
+            idx2node.put(j, node2);
+            //node2idx.put(node1, i);
+            //node2idx.put(node2, j);
+        }
         HashMap<String, Double> hm;
         if (!graph.containsKey(node1))
             hm = new HashMap<>();
@@ -39,7 +53,7 @@ public class SparseMat {
         hm.put(node2, val);
         graph.put(node1, hm);
     }
-
+    
     void print() {
         //needs to be square, only includes available nodes
         //Prints in table format
@@ -74,18 +88,16 @@ public class SparseMat {
     double[][] toDouble() {
         ArrayList<String> ordNodes = toNodes(); // must be sorted to ensure the same matrix every time
         double[][] ret = new double[nodes.size()][nodes.size()];
-        for (int row = 0; row < ret.length; row++) {
-            for (int col = 0; col < ret.length; col++) {
+        for (int row = 0; row < ret.length; row++)
+            for (int col = 0; col < ret.length; col++)
                 ret[row][col] = getVal(ordNodes.get(row), ordNodes.get(col));
-            }
-        }
         return ret; // full double[][] matrix
     }
     ArrayList<String> toNodes() {
         //MUST be ordered, so that this will match toDouble()
         ArrayList<String> ordNodes = new ArrayList<>();
-        ordNodes.addAll(nodes);
-        Collections.sort(ordNodes);
+        for (int i = 0; i > nodes.size(); i++)
+            ordNodes.add(idx2node.get(i));
         return ordNodes;
     }
 
