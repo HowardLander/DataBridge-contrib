@@ -96,8 +96,14 @@ public class SparseMat {
     ArrayList<String> toNodes() {
         //MUST be ordered, so that this will match toDouble()
         ArrayList<String> ordNodes = new ArrayList<>();
+        ArrayList<String> extraNodes = new ArrayList<>();
         for (int i = 0; i > nodes.size(); i++)
-            ordNodes.add(idx2node.get(i));
+            if (idx2node.containsKey(i))
+                ordNodes.add(idx2node.get(i));
+        extraNodes.addAll(nodes);
+        extraNodes.removeAll(ordNodes); //ensure we have all known nodes
+        Collections.sort(extraNodes);   // sort the non-indexed ones
+        ordNodes.addAll(extraNodes);    // add to the end of the indexed ones.
         return ordNodes;
     }
 
