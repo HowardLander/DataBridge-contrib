@@ -22,7 +22,7 @@ public class MockSNA implements NetworkProcessor {
                                                      String params) {
 
         HashMap<String, Boolean> nodeList = new HashMap<String, Boolean>();
-        org.la4j.matrix.sparse.CRSMatrix theMatrix = new org.la4j.matrix.sparse.CRSMatrix();
+        org.la4j.matrix.sparse.CRSMatrix theMatrix = new org.la4j.matrix.sparse.CRSMatrix(112, 112);
 
         while (theDyads.hasNext()) {
             NetworkDyadTransferObject thisDyad = theDyads.next();
@@ -36,12 +36,22 @@ public class MockSNA implements NetworkProcessor {
             }
 
             if (thisDyad.getNode1DataStoreId() != null && thisDyad.getNode2DataStoreId() != null) {
+              System.out.println("i,j: " + thisDyad.getI() + "," + thisDyad.getJ());
               theMatrix.set(thisDyad.getI(), thisDyad.getJ(), thisDyad.getSimilarity());
             }
         }    
 
         System.out.println("\tMatrix: ");
-        System.out.println(theMatrix.toString());
+        for (int i = 0; i < theMatrix.rows(); i++) {
+            System.out.println("Row: " + i);
+            if (theMatrix.maxInRow(i) > 0.) {
+               org.la4j.vector.Vector thisRow = theMatrix.getRow(i);
+               System.out.println(thisRow.toString());
+            } else {
+               System.out.println("Skipping empty row");
+            }
+            System.out.println("");
+        }
 
         HashMap<String, String[]> returnMap = new HashMap<String, String[]>();
         int clusterCounter =  0;
@@ -51,8 +61,10 @@ public class MockSNA implements NetworkProcessor {
            Map.Entry entry = (Map.Entry) it.next();
            String entries[] = new String[2];
            entries[0] = (String) entry.getKey();
-           entry = (Map.Entry) it.next();
-           entries[1] = (String) entry.getKey();
+           if (it.hasNext()) {
+              entry = (Map.Entry) it.next();
+              entries[1] = (String) entry.getKey();
+           }
            String clusterString = Integer.toString(clusterCounter);
            returnMap.put(clusterString, entries);
            clusterCounter ++; 
