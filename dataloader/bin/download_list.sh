@@ -25,7 +25,7 @@ do
   if [[ $url != \#* ]] && [ ! -z "$url" ] ;
   then
     javastring=""
-    #wget --no-check-certificate --no-clobber --directory-prefix=$absdldir $url
+    wget --no-check-certificate --no-clobber --directory-prefix=$absdldir $url
     file="${url##*/}"
     if [ $cururlline -eq $lasturlline ]
       then
