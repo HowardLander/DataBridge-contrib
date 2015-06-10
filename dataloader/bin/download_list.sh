@@ -12,14 +12,29 @@ amqpconffile=$2
 namespace=$3
 absdldir=$4
 classpath=`cat classpath.txt`
-javabase="-Djava.util.logging.config.file=logging.properties -cp $classpath org.renci.databridge.contrib.dataloader.DataLoader "$amqpconffile" org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl "$namespace" false file://"
+javabase="-Djava.util.logging.config.file=logging.properties -cp $classpath org.renci.databridge.contrib.dataloader.DataLoader "$amqpconffile" org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl "$namespace
 
+# count url lines to get last url line
+# loop will count also to identify last url st event flag can be set
+lasturlline=`grep -w -v '^#*' -c $1` # count only non-commented, nonempty lines
+echo lasturlline: $lasturlline
+
+cururlline=1
 while read url
 do
   if [[ $url != \#* ]] && [ ! -z "$url" ] ;
   then
+    javastring=""
     wget --no-check-certificate --no-clobber --directory-prefix=$absdldir $url
     file="${url##*/}"
-    java $javabase$absdldir/$file
+    if [ $cururlline -eq $lasturlline ]
+      then
+        javastring=$javabase$" true file://"
+        echo "cururlline -eq lasturlline at $cururlline"
+      else
+        javastring=$javabase$" false file://" 
+      fi
+    java $javastring$absdldir/$file
+    ((cururlline++))
   fi
 done < "$1"
