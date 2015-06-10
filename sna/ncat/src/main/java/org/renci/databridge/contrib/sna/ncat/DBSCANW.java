@@ -39,12 +39,20 @@ public class DBSCANW implements NetworkProcessor {
             if (node2 == null)
                 // Singleton node, just add 1 to self symmetry
                 // We assume no other nodes use it.
-                mat.addEleDir(node1, node1, 1.0, i, j);
-                //mat.addEleUndir(node1, node1, 1.0, i, j);
+                
+                //technically adding a single directed path accomplishes the same
+                //task, but for ease of understanding, we stay like this.
+                //mat.addEleDir(node1, node1, 1.0, i, j);
+                mat.addEleUndir(node1, node1, 1.0, i, j);
+                    //Technically we should use i for both, simply because it
+                    //should be the same for both.  the reason we don't is,
+                    //again, for ease of understanding
+                    //
+                    //Note: if i and j are NOT the same, unexpected results will occur.
             else
                 //regular node
-                mat.addEleDir(node1, node2, sim, i, j);
-                //mat.addEleUndir(node1, node2, sim, i, j);
+                //mat.addEleDir(node1, node2, sim, i, j);
+                mat.addEleUndir(node1, node2, sim, i, j);
         }
         double[][] data = mat.toDouble();
         

@@ -71,12 +71,12 @@ public class MaximalCliques implements NetworkProcessor {
             if (node2 == null)
                 // Singleton node, just add 1 to self symmetry
                 // We assume no other nodes use it.
-                mat.addEleDir(node1, node1, 1.0, i, j);
-                //mat.addEleUndir(node1, node1, 1.0, i, j);
+                //mat.addEleDir(node1, node1, 1.0, i, j);
+                mat.addEleUndir(node1, node1, 1.0, i, j);
             else
                 //regular node
-                mat.addEleDir(node1, node2, sim, i, j);
-                //mat.addEleUndir(node1, node2, sim, i, j);
+                //mat.addEleDir(node1, node2, sim, i, j);
+                mat.addEleUndir(node1, node2, sim, i, j);
         }
         double[][] data = mat.toDouble();
         

@@ -36,7 +36,16 @@ public class SparseMat {
         addEleDir(node1, node2, val, -1, -1);
     }
 
+    void addEleUndir(String node1, String node2, double val, int i, int j) {
+        //NOTE: if i or j does NOT match the index of the node, unexpected results will occur.
+        //Data could be lost, as the code does not check you gave the right index.
+        addEleDir(node1, node2, val, i, j);
+        addEleDir(node2, node1, val, j, i);
+    }
+    
     void addEleDir(String node1, String node2, double val, int i, int j) {
+        //NOTE: if i or j does NOT match the index of the node, unexpected results will occur.
+        //Data could be lost, as the code does not check you gave the right index.
         nodes.add(node1);
         nodes.add(node2);
         if (i >= 0 || j >= 0) {
