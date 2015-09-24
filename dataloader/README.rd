@@ -16,3 +16,6 @@ cd to databridge-contrib/dataloader/
 
 mvn clean compile exec:java -Dexec.mainClass=org.renci.databridge.contrib.dataloader.DataLoader -Dexec.args="./DataBridge.conf org.renci.databridge.contrib.formatter.codebook.CodeBookMetadataFormatterImpl test_ingest false file:///path/to/file"
 
+Invocation using the shell script in bin/ is as follows:
+
+download_list.sh <download-list> <AMQP-comms-conf-file> <namespace> <download-file-location> <fqcn-for-formatter>
