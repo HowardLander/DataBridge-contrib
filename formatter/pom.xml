@@ -18,6 +18,7 @@
   <modules>
     <module>codebook</module>
     <module>oaipmh</module>
+    <module>clinicaltrialsdotgov</module>
   </modules>
 
   <dependencies>

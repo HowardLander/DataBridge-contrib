@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+       <groupId>org.renci.databridge.contrib.formatter</groupId>
+       <artifactId>formatter</artifactId>
+       <version>1.0-BETA</version>
+       <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.renci.databridge.contrib.formatter.clinicaltrialsdotgov</groupId>
+    <artifactId>clinicaltrialsdotgov</artifactId>
+    <packaging>jar</packaging>
+    <name>DataBridge Contrib Formatter: ClinicalTrialsDotGov</name>
+    <version>1.0-BETA</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.renci.databridge.persistence</groupId>
+            <artifactId>databridge-persistence</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
+        <dependency>
+          <!-- jsoup HTML parser library @ http://jsoup.org/ -->
+          <groupId>org.jsoup</groupId>
+          <artifactId>jsoup</artifactId>
+          <version>1.8.3</version>
+        </dependency>
+
+        <dependency>
+          <groupId>edu.stanford.nlp</groupId>
+          <artifactId>stanford-corenlp</artifactId>
+          <version>3.4.1</version>
+        </dependency>
+        <dependency>
+          <groupId>edu.stanford.nlp</groupId>
+          <artifactId>stanford-corenlp</artifactId>
+          <version>3.4.1</version>
+          <classifier>models</classifier>
+        </dependency>
+
+        <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.1</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
