@@ -47,6 +47,7 @@ public class ClinicalTrialsDotGovFormatterImplTest {
 
     }
 
+    @Ignore
     @Test
     public void testFormatAPage () throws Exception {
 
@@ -69,45 +70,65 @@ public class ClinicalTrialsDotGovFormatterImplTest {
 
     }
 
-    @Ignore
+    /**
+     * File must be in format from clinicalTrials.gov download feature.
+     */
     @Test
-    public void testEmitAUrlList () throws Exception {
+    public void testEmitJsonFromDownloadedStudyList () throws Exception {
 
       System.out.println ("Emitting files from a ClinicalTrials.cov URL list...");
 
-      // get file URL list
+      // get file with URL list
       StringWriter sw = new StringWriter ();
-      try (InputStream is = ClinicalTrialsDotGovFormatterImplTest.class.getResourceAsStream ("/urllist.txt")) {
+      try (InputStream is = ClinicalTrialsDotGovFormatterImplTest.class.getResourceAsStream ("/all_studies_list.txt")) {
         int c;
         while ((c = is.read ()) != -1 ) {
           sw.write (c);
         }
       }
-      String urlList = sw.toString ();
-System.out.println (urlList); 
+      String allStudiesList = sw.toString ();
 
       ClinicalTrialsDotGovFormatterImpl ctdgfi = new ClinicalTrialsDotGovFormatterImpl ();
 
-      BufferedReader br = new BufferedReader (new StringReader (urlList));
-      String url = null;
-      // this will be the directory of this sub-project 
+      BufferedReader br = new BufferedReader (new StringReader (allStudiesList));
+      String line = null;
+      // this will be the directory of this maven sub-project 
       String targetDirPath = new File (".").getCanonicalPath () + "/target/emitted-json";
       System.out.println ("Target path: " + targetDirPath);
       new File (targetDirPath).mkdir ();
-      while ((url = br.readLine ()) != null) {
+      while ((line = br.readLine ()) != null) {
 
-        // ignore blank lines and comments
-        if (!url.startsWith ("#") && !url.equals ("")) {
-          String html = Jsoup.connect (url).get ().html ();
-          List<MetadataObject> metadataObjects = ctdgfi.format (htmlString.getBytes ());
-          for (MetadataObject mo : metadataObjects) {
-            CollectionTransferObject cto = mo.getCollectionTransferObject ();
-            Map<String,String> extra = cto.getExtra ();
-            String recordName = url.substring (url.lastIndexOf ("/") + 1, url.indexOf ("?"));
-            System.out.println ("Emitting JSON for record '" + recordName + "'");
-            PrintWriter out = new PrintWriter (targetDirPath + "/" + recordName + ".json");
-            out.println (extra.toString ());
-            out.close ();
+        // ignore lines that don't begin with "URL"
+        line = line.trim ();
+        if (line.startsWith ("URL:")) {
+         
+          String [] split = line.split ("\\s+"); 
+          String originalUrl = split [1];
+          // transform https://ClinicalTrials.gov/show/NCT02525536
+          // to https://clinicaltrials.gov/ct2/show/record/NCT02525536
+          String recordName = originalUrl.substring (originalUrl.lastIndexOf ("/") + 1, originalUrl.length ());
+          String url = "https://clinicaltrials.gov/ct2/show/record/" + recordName;
+          System.out.println ("Processing transformed URL: " + url);
+          try { 
+            String html = Jsoup.connect (url).get ().html ();
+            // delay a bit to be polite
+            Thread.sleep (1000);
+            // append source URL to source HTML so formatter can retrieve it
+            // is it cricket to put comment after closing html tag?
+            html = html + "<!-- srcURL: " + url + " -->";
+
+            List<MetadataObject> metadataObjects = ctdgfi.format (html.getBytes ());
+            for (MetadataObject mo : metadataObjects) {
+              CollectionTransferObject cto = mo.getCollectionTransferObject ();
+              Map<String,String> extra = cto.getExtra ();
+              System.out.println ("Emitting JSON for record '" + recordName + "'");
+              PrintWriter out = new PrintWriter (targetDirPath + "/" + recordName + ".json");
+              out.println (extra.toString ());
+              out.close ();
+            }
+          } catch (Exception e) {
+            System.err.println ("Error:");
+            e.printStackTrace ();
           }
         }
 

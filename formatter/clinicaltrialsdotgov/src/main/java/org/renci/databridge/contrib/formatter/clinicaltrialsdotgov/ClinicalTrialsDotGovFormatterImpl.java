@@ -65,7 +65,7 @@ public class ClinicalTrialsDotGovFormatterImpl implements MetadataFormatter {
     // set up lemmatizer with init params: http://nlp.stanford.edu/software/corenlp.shtml
     StanfordLemmatizer sl = new StanfordLemmatizer ();
 
-    // scrape HTML 
+    // process HTML 
     Document doc = Jsoup.parse (html);
     // http://jsoup.org/apidocs/org/jsoup/select/Selector.html 
     // there should be only one element with CSS class "data_table"
@@ -80,8 +80,10 @@ public class ClinicalTrialsDotGovFormatterImpl implements MetadataFormatter {
       // in tabular page format th child contains "key" and td child has "value"
       Element th = tr.select ("th").first ();
       String thText = (th != null) ? th.text () : null;
+      // System.out.println ("thText: " + thText);
       Element td = tr.select ("td").first ();
       String tdText = (td != null) ? td.text () : null;
+      // System.out.println ("tdText: " + tdText);
 
       if (thText != null) {
         plainTextMap.put (thText, tdText);
@@ -90,11 +92,13 @@ public class ClinicalTrialsDotGovFormatterImpl implements MetadataFormatter {
           lemmatizedTextMap.put (thText, lemmatizedText);
         }
       }
-
     }
+    // srcUrl is expecetd to be the last comment in html string
+    int srcUrlStartIdx = html.lastIndexOf ("<!-- srcURL: ") + 13;
+    int srcUrlEndIdx = html.indexOf (" -->", srcUrlStartIdx);
+    String srcUrl = html.substring (srcUrlStartIdx, srcUrlEndIdx);
+    System.out.println ("srcURL: '" + srcUrl + "'");
 
-    // @todo remove stop words?
-   
     // jsonize
     // Gson gson = new Gson ();
     Gson gson = new GsonBuilder ().serializeNulls ().setPrettyPrinting ().create (); 
@@ -104,6 +108,7 @@ public class ClinicalTrialsDotGovFormatterImpl implements MetadataFormatter {
     // package json into "extra" hashmap
     // @todo data structure need to be altered slightly
     HashMap<String, String> extra = new HashMap<String, String> ();
+    if (srcUrl != null) extra.put ("SOURCE_URL", srcUrl);
     extra.put ("TABULAR_VIEW_MAP_JSON", plainTextJson);
     extra.put ("TABULAR_VIEW_MAP_LEMMATIZED_JSON", lemmatizedJson); 
     cto.setExtra (extra);
