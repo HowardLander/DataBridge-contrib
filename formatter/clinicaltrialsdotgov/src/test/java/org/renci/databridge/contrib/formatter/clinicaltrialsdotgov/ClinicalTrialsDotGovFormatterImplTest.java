@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.Map;
+import java.util.HashMap;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -20,6 +21,11 @@ import org.junit.matchers.JUnitMatchers;
 import org.junit.Rule;
 
 import org.jsoup.Jsoup;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import org.renci.databridge.persistence.metadata.MetadataObject;
 import org.renci.databridge.persistence.metadata.CollectionTransferObject;
@@ -118,12 +124,25 @@ public class ClinicalTrialsDotGovFormatterImplTest {
             html = html + "<!-- srcURL: " + url + " -->";
 
             List<MetadataObject> metadataObjects = ctdgfi.format (html.getBytes ());
+            Gson gson = new GsonBuilder ().serializeNulls ().setPrettyPrinting ().create ();
+            Type mapType = new TypeToken<Map<String,String>> () {}.getType ();
             for (MetadataObject mo : metadataObjects) {
               CollectionTransferObject cto = mo.getCollectionTransferObject ();
               Map<String,String> extra = cto.getExtra ();
               System.out.println ("Emitting JSON for record '" + recordName + "'");
               PrintWriter out = new PrintWriter (targetDirPath + "/" + recordName + ".json");
-              out.println (extra.toString ());
+
+              // must unpack JSON from Map<String,String> values, reconstitute into objects, and then reJSONize the entire Map...
+              Map<String,Object> fixedExtra = new HashMap<String,Object> ();
+              String srcUrl = extra.get ("SOURCE_URL");
+              String plainTextJson = extra.get ("TABULAR_VIEW_MAP_JSON");
+              String lemmatizedJson = extra.get ("TABULAR_VIEW_MAP_LEMMATIZED_JSON");
+              if (srcUrl != null) fixedExtra.put ("SOURCE_URL", srcUrl);
+              fixedExtra.put ("TABULAR_VIEW_MAP_JSON", gson.fromJson (plainTextJson, Object.class));
+              fixedExtra.put ("TABULAR_VIEW_MAP_LEMMATIZED_JSON", gson.fromJson (lemmatizedJson, Object.class));              
+              String jsonizedMap = gson.toJson (fixedExtra);
+              out.println (jsonizedMap);
+              // out.println (extra.toString ());
               out.close ();
             }
           } catch (Exception e) {
