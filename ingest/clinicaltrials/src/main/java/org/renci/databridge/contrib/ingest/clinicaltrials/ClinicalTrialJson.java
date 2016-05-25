@@ -1627,4 +1627,46 @@ public class ClinicalTrialJson {
  {
      this.studyType[index] = studyType;
  }
+ 
+ /**
+  * Get hasDataMonitoringCommitte.
+  *
+  * @return hasDataMonitoringCommitte as String[].
+  */
+ public String[] getHasDataMonitoringCommitte()
+ {
+     return hasDataMonitoringCommitte;
+ }
+ 
+ /**
+  * Get hasDataMonitoringCommitte element at specified index.
+  *
+  * @param index the index.
+  * @return hasDataMonitoringCommitte at index as String.
+  */
+ public String getHasDataMonitoringCommitte(int index)
+ {
+     return hasDataMonitoringCommitte[index];
+ }
+ 
+ /**
+  * Set hasDataMonitoringCommitte.
+  *
+  * @param hasDataMonitoringCommitte the value to set.
+  */
+ public void setHasDataMonitoringCommitte(String[] hasDataMonitoringCommitte)
+ {
+     this.hasDataMonitoringCommitte = hasDataMonitoringCommitte;
+ }
+ 
+ /**
+  * Set hasDataMonitoringCommitte at the specified index.
+  *
+  * @param hasDataMonitoringCommitte the value to set.
+  * @param index the index.
+  */
+ public void setHasDataMonitoringCommitte(String hasDataMonitoringCommitte, int index)
+ {
+     this.hasDataMonitoringCommitte[index] = hasDataMonitoringCommitte;
+ }
 }
