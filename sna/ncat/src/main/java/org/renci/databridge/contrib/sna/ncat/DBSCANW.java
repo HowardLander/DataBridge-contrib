@@ -35,24 +35,27 @@ public class DBSCANW implements NetworkProcessor {
             int i = ndto.getI();
             int j = ndto.getJ();
             double sim = ndto.getSimilarity();
+            System.out.println("i,j,sim: " + i + "," + j + "," + sim);
             //singleton nodes are special.
-            if (node2 == null)
+            if (node2 == null) {
                 // Singleton node, just add 1 to self symmetry
                 // We assume no other nodes use it.
                 
                 //technically adding a single directed path accomplishes the same
                 //task, but for ease of understanding, we stay like this.
                 //mat.addEleDir(node1, node1, 1.0, i, j);
-                mat.addEleUndir(node1, node1, 1.0, i, j);
+                System.out.println("Singleton: i,j,sim: " + i + "," + j + "," + sim);
+                //mat.addEleUndir(node1, node1, 1.0, i, i);
                     //Technically we should use i for both, simply because it
                     //should be the same for both.  the reason we don't is,
                     //again, for ease of understanding
                     //
                     //Note: if i and j are NOT the same, unexpected results will occur.
-            else
+            } else {
                 //regular node
                 //mat.addEleDir(node1, node2, sim, i, j);
                 mat.addEleUndir(node1, node2, sim, i, j);
+            }
         }
         double[][] data = mat.toDouble();
         
@@ -61,6 +64,7 @@ public class DBSCANW implements NetworkProcessor {
             ret = run(mat.toNodes(), data);
         } catch (Exception ex) {
             ret = new HashMap<>();
+            ex.printStackTrace();
             System.err.println(ex.getMessage());
             System.err.println("Unable to create DBSCAN clusterer!");
             System.err.println("Returning empty cluster list...");
@@ -81,12 +85,14 @@ public class DBSCANW implements NetworkProcessor {
             datascheme.add(new Instance(1.0, row));
         }
         clusterer.buildClusterer(datascheme);
+        System.out.println("the clusterer: " + clusterer.toString());
         
         //workaround, instances will be returned in the order given.
         HashMap<Integer, ArrayList<String>> tmp = new HashMap<>();
         ArrayList<String> tmp2;
         for (String node : toNodes) {
             int id = clusterer.clusterInstance(null); // will return values in added order
+            System.out.println("returnedId: " + id);
             if (tmp.containsKey(id))
                 tmp2 = tmp.get(id);
             else
