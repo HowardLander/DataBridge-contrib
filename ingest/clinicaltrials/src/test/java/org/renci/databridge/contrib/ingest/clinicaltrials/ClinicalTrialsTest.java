@@ -35,15 +35,54 @@ public class ClinicalTrialsTest {
         try {
             // Get file from resources folder
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(fileName).getFile());
-            BufferedReader nodeReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+            String filePath = classLoader.getResource(fileName).getFile();
+            ClinicalTrialJson theObject = ClinicalTrialJson.readJsonFromFile(filePath);
+            String theURL = theObject.getSourceURL();
+            System.out.println("read Url: " + theURL);
+            TestCase.assertTrue("could not read data", theURL != null);
 
-           // Create the Gson object and read the file
-           Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).setPrettyPrinting().serializeNulls().disableHtmlEscaping().create();
-           ClinicalTrialJson theObject = gson.fromJson(nodeReader, ClinicalTrialJson.class);
-           String theURL = theObject.getSourceURL();
-           System.out.println("read Url: " + theURL);
-           TestCase.assertTrue("could not read data", theURL != null);
+            System.out.println("testing basic serialization");
+            byte[] theBytes = ClinicalTrialJson.serialize(theObject);
+            ClinicalTrialJson theReturnedObject = ClinicalTrialJson.deserialize(theBytes);
+            System.out.println("theReturnedURL: " + theReturnedObject.getSourceURL());
+            TestCase.assertTrue("serialize/deserialize loop failed", 
+                                 theURL.compareTo(theReturnedObject.getSourceURL()) == 0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+    @Test
+
+    public void testArraySerialization() {
+        String fileName = "processed-clinicalTrials.9999"; //NCT00867139
+        String fileName2 = "processed-clinicalTrials.9998"; //NCT00867035
+        ArrayList<ClinicalTrialJson> trialList = new ArrayList<ClinicalTrialJson>();
+        ArrayList<ClinicalTrialJson> returnedList = new ArrayList<ClinicalTrialJson>();
+        try {
+            // Get file from resources folder
+            ClassLoader classLoader = getClass().getClassLoader();
+
+            String filePath = classLoader.getResource(fileName).getFile();
+            ClinicalTrialJson theObject = ClinicalTrialJson.readJsonFromFile(filePath);
+            trialList.add(theObject);
+
+            String filePath2 = classLoader.getResource(fileName2).getFile();
+            ClinicalTrialJson theObject2 = ClinicalTrialJson.readJsonFromFile(filePath2);
+            String theURL = theObject2.getSourceURL();
+            trialList.add(theObject2);
+
+            System.out.println("testing ArrayList serialization");
+            byte[] theBytes = ClinicalTrialJson.serializeArrayList(trialList);
+            returnedList = ClinicalTrialJson.deserializeArrayList(theBytes);
+            ClinicalTrialJson returnedObject = returnedList.get(1);
+            System.out.println("theURL: " + theURL);
+            System.out.println("theReturnedURL: " + returnedObject.getSourceURL());
+            TestCase.assertTrue("serialize/deserialize loop failed", 
+                                theURL.compareTo(returnedObject.getSourceURL()) == 0);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

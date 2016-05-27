@@ -11,7 +11,7 @@ import com.google.gson.annotations.*;
  * @author Howard Lander -RENCI (www.renci.org)
  * 
  */
-public class ClinicalTrialJson {
+public class ClinicalTrialJson implements Serializable{
     @SerializedName("SOURCE_URL") private String sourceURL;
     @SerializedName("Has Data Monitoring Committee") private String[] hasDataMonitoringCommitte;
     @SerializedName("Investigators") private String[] investigators;
@@ -52,6 +52,82 @@ public class ClinicalTrialJson {
     @SerializedName("Responsible Party") private String[] responsibleParty;
     @SerializedName("Original Other Outcome Measures") private String[] originalOtherOutcomeMeasures;
     @SerializedName("Study Type") private String[] studyType;
+
+   /**
+    * Serialize the object
+    *
+    * @param The object to convert to an array of bytes
+    * @return The array of bytes representing the object
+    */
+    public static byte[] serialize(ClinicalTrialJson obj) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(out);
+        os.writeObject(obj);
+        return out.toByteArray();
+    }
+
+   /**
+    * Deserialize the object
+    *
+    * @param The array of bytes representing the object to convert to a ClinicalTrialJson object.
+    * @return The deserialized object
+    */
+    public static ClinicalTrialJson deserialize(byte[] data) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream in = new ByteArrayInputStream(data);
+        ObjectInputStream is = new ObjectInputStream(in);
+        ClinicalTrialJson theTrial = (ClinicalTrialJson) is.readObject();
+        return theTrial;
+    }
+
+   /**
+    * Serialize an array of objects
+    *
+    * @param The objects to convert to an array of bytes
+    * @return The array of bytes representing the object
+    */
+    public static byte[] serializeArrayList(ArrayList<ClinicalTrialJson> obj) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectOutputStream os = new ObjectOutputStream(out);
+        os.writeObject(obj);
+        return out.toByteArray();
+    }
+
+   /**
+    * Deserialize the objects
+    *
+    * @param The array of bytes representing the objects to convert to an array of ClinicalTrialJson objects.
+    * @return The deserialized array op objects
+    */
+    public static ArrayList<ClinicalTrialJson> deserializeArrayList(byte[] data) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream in = new ByteArrayInputStream(data);
+        ObjectInputStream is = new ObjectInputStream(in);
+        @SuppressWarnings("unchecked")
+        ArrayList<ClinicalTrialJson> theTrials = (ArrayList<ClinicalTrialJson>) is.readObject();
+        return theTrials;
+    }
+ 
+
+   /**
+    * Read a ClinicalTrialsJson object from a json file
+    *
+    * @param the file name to read
+    * @return The array of bytes representing the object
+    */
+    public static ClinicalTrialJson readJsonFromFile(String fileName) {
+        ClinicalTrialJson theObject = null;
+        try {
+            // Get file 
+            File file = new File(fileName);
+            BufferedReader nodeReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+
+           // Create the Gson object and read the file
+           Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).setPrettyPrinting().serializeNulls().disableHtmlEscaping().create();
+           theObject = gson.fromJson(nodeReader, ClinicalTrialJson.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return theObject;
+    }
  
  /**
   * Get sourceURL.
