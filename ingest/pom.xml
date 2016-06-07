@@ -16,6 +16,7 @@
   <name>DataBridge Contrib Ingest</name>
   <url>http://maven.apache.org</url>
   <modules>
+    <module>util</module>
     <module>clinicaltrials</module>
   </modules>
 
