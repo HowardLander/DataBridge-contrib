@@ -1,7 +1,10 @@
 package org.renci.databridge.contrib.ingest.clinicaltrials;
 
 import org.renci.databridge.contrib.ingest.clinicaltrials.*;
+import org.renci.databridge.persistence.metadata.*;
 import java.util.*;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.AfterClass;
@@ -53,8 +56,8 @@ public class ClinicalTrialsTest {
             e.printStackTrace();
         }
     } 
-    @Test
 
+    @Test
     public void testArraySerialization() {
         String fileName = "processed-clinicalTrials.9999"; //NCT00867139
         String fileName2 = "processed-clinicalTrials.9998"; //NCT00867035
@@ -81,6 +84,44 @@ public class ClinicalTrialsTest {
             System.out.println("theReturnedURL: " + returnedObject.getSourceURL());
             TestCase.assertTrue("serialize/deserialize loop failed", 
                                 theURL.compareTo(returnedObject.getSourceURL()) == 0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+
+    @Test
+    public void testClinicalTrialFormatter() {
+        String fileName = "processed-clinicalTrials.9999"; //NCT00867139
+        String fileName2 = "processed-clinicalTrials.9998"; //NCT00867035
+        ArrayList<ClinicalTrialJson> trialList = new ArrayList<ClinicalTrialJson>();
+        ArrayList<ClinicalTrialJson> returnedList = new ArrayList<ClinicalTrialJson>();
+        Logger logger = Logger.getLogger("org.renci.databridge.contrib.ingest.clinicaltrials");
+        try {
+            // Get file from resources folder
+            ClassLoader classLoader = getClass().getClassLoader();
+
+            String filePath = classLoader.getResource(fileName).getFile();
+            ClinicalTrialJson theObject = ClinicalTrialJson.readJsonFromFile(filePath);
+            trialList.add(theObject);
+
+            String filePath2 = classLoader.getResource(fileName2).getFile();
+            ClinicalTrialJson theObject2 = ClinicalTrialJson.readJsonFromFile(filePath2);
+            String theURL = theObject2.getSourceURL();
+            trialList.add(theObject2);
+
+            System.out.println("testing formatting code");
+            byte[] theBytes = ClinicalTrialJson.serializeArrayList(trialList);
+
+            List<MetadataObject> metadataObjects = null;
+            ClinicalTrialFormatter mf = new ClinicalTrialFormatter();
+            mf.setLogger(logger);
+            metadataObjects = mf.format (theBytes);
+            MetadataObject thisMeta = (MetadataObject) metadataObjects.get(1);
+            System.out.println("thisMeta: " + thisMeta.getCollectionTransferObject());
+            TestCase.assertTrue("format failed",
+                                theURL.compareTo(thisMeta.getCollectionTransferObject().getURL()) == 0);
 
 
         } catch (Exception e) {

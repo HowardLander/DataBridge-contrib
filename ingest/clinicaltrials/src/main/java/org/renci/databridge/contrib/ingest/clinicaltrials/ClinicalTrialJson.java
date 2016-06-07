@@ -128,6 +128,26 @@ public class ClinicalTrialJson implements Serializable{
         }
         return theObject;
     }
+
+   /**
+    * Create a single string object from an array.  Used for some of fields in the 
+    * ClinicalTrialJSON object
+    *
+    * @param the array of strings
+    * @param the desired separator
+    * @return A single string with all of the members of the input array separated.
+    */
+public static String strJoin(String[] theArray, String theSeparator) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < theArray.length; i++) {
+            if (i > 0) {
+                // No separator at the beginning
+                sb.append(theSeparator);
+            }
+            sb.append(theArray[i]);
+        }
+    return sb.toString();
+    }
  
  /**
   * Get sourceURL.
