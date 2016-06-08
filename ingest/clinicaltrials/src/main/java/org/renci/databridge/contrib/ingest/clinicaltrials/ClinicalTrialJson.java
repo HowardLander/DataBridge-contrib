@@ -1,8 +1,11 @@
 package org.renci.databridge.contrib.ingest.clinicaltrials;
+import org.renci.databridge.contrib.ingest.util.*;
 import java.io.*;
 import java.util.*;
 import com.google.gson.*;
 import com.google.gson.annotations.*;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 /**
@@ -134,19 +137,34 @@ public class ClinicalTrialJson implements Serializable{
     * ClinicalTrialJSON object
     *
     * @param the array of strings
-    * @param the desired separator
+    * @param whether or not to call the stop word code from the IngestUtil class
     * @return A single string with all of the members of the input array separated.
     */
-public static String strJoin(String[] theArray, String theSeparator) {
+   public static String strJoin(String[] theArray, boolean stop) {
+        String theSeparator = " ";
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < theArray.length; i++) {
-            if (i > 0) {
-                // No separator at the beginning
-                sb.append(theSeparator);
-            }
-            sb.append(theArray[i]);
+        Logger logger = Logger.getLogger ("org.renci.databridge.contrib.ingest.clinicaltrials");
+        if (theArray.length == 0) {
+            return new String("");
+        } else {
+           for (int i = 0; i < theArray.length; i++) {
+               if (i > 0) {
+                   // No separator at the beginning
+                   sb.append(theSeparator);
+               }
+               sb.append(theArray[i]);
+           }
+           if (stop) {
+               try {
+                   return IngestUtils.removeStopWords(sb.toString());
+               } catch (Exception e) {
+                   logger.log (Level.SEVERE, "Caught in format processing " +  ":" + sb.toString() + ": " + e.getMessage(),e);
+                   return new String("");
+               }
+           } else {
+               return sb.toString();
+           }
         }
-    return sb.toString();
     }
  
  /**

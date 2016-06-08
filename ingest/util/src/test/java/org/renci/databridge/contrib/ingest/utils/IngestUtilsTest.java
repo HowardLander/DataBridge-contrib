@@ -37,8 +37,37 @@ public class IngestUtilsTest {
             System.out.println("testing stop word processing");
             String testString = "This is a test string";
             String stoppedString = "test string";
-            System.out.println("testString: " + testString);
-            System.out.println("testString after stops:" + IngestUtils.removeStopWords(testString) + ":");
+            TestCase.assertTrue("stop word processing failed",
+                                stoppedString.compareTo(IngestUtils.removeStopWords(testString)) == 0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+
+    @Test
+    public void testSingleStopWordProcessor() {
+        try {
+            System.out.println("testing single stop word processing");
+            String testString = "interventional ";
+            String stoppedString = "interventional";
+            TestCase.assertTrue("stop word processing failed",
+                                stoppedString.compareTo(IngestUtils.removeStopWords(testString)) == 0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+
+    @Test
+    public void testStopWordNoProcessor() {
+        try {
+            // Can't fail if we have a single word that is a stop word.
+            System.out.println("testing single stop word processing when word is a stop word");
+            String testString = "no";
+            String stoppedString = "";
             TestCase.assertTrue("stop word processing failed",
                                 stoppedString.compareTo(IngestUtils.removeStopWords(testString)) == 0);
 

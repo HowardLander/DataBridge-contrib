@@ -11,6 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.databridge.contrib.ingest</groupId>
   <artifactId>util</artifactId>
+  <packaging>jar</packaging>
   <name>DataBridge Contrib Utils</name>
   <version>1.0-BETA</version>
 

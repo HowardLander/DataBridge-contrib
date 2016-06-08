@@ -27,6 +27,11 @@
       <version>1.0-BETA</version>
     </dependency>
     <dependency>
+      <groupId>org.renci.databridge.contrib.ingest</groupId>
+      <artifactId>util</artifactId>
+      <version>1.0-BETA</version>
+    </dependency>
+    <dependency>
       <groupId>org.renci.databridge.formatter</groupId>
       <artifactId>databridge-formatter</artifactId>
       <version>1.0-BETA</version>
