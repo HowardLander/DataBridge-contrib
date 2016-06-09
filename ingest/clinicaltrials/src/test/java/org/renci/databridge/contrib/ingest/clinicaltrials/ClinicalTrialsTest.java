@@ -92,6 +92,54 @@ public class ClinicalTrialsTest {
     } 
 
     @Test
+    public void testGetBytes() {
+        String fileName = "processed-clinicalTrials.9999"; //NCT00867139
+        String fileName2 = "processed-clinicalTrials.9998"; //NCT00867035
+        ArrayList<ClinicalTrialJson> trialList = new ArrayList<ClinicalTrialJson>();
+        ArrayList<ClinicalTrialJson> returnedList = new ArrayList<ClinicalTrialJson>();
+        ArrayList<ClinicalTrialJson> fromGetList = new ArrayList<ClinicalTrialJson>();
+
+        Logger logger = Logger.getLogger("org.renci.databridge.contrib.ingest.clinicaltrials");
+        ClinicalTrialFormatter mf = new ClinicalTrialFormatter();
+        mf.setLogger(logger);
+        try {
+            // Get file from resources folder
+            ClassLoader classLoader = getClass().getClassLoader();
+
+            String filePath = classLoader.getResource(fileName).getFile();
+            ClinicalTrialJson theObject = ClinicalTrialJson.readJsonFromFile(filePath);
+            trialList.add(theObject);
+
+            String filePath2 = classLoader.getResource(fileName2).getFile();
+            ClinicalTrialJson theObject2 = ClinicalTrialJson.readJsonFromFile(filePath2);
+            String theURL = theObject2.getSourceURL();
+            trialList.add(theObject2);
+            byte[] theBytes = ClinicalTrialJson.serializeArrayList(trialList);
+            returnedList = ClinicalTrialJson.deserializeArrayList(theBytes);
+            ClinicalTrialJson returnedObject = returnedList.get(1);
+            String theReturnedURL = returnedObject.getSourceURL();
+
+            // Now try using getBytes
+            System.out.println("testing getBytes");
+            File resourcesDirectory = new File("src/test/resources");
+            byte[] fromGetBytes = mf.getBytes(resourcesDirectory.getAbsolutePath());
+            // Make sure what we got from getBytes matches what we got from reading directlu
+            fromGetList = ClinicalTrialJson.deserializeArrayList(fromGetBytes);
+            ClinicalTrialJson returnedFromGetBytes = fromGetList.get(1);
+            String getBytesURL = returnedFromGetBytes.getSourceURL();
+
+            System.out.println("theReturnedURL: " + theReturnedURL);
+            System.out.println("getBytesURL: " + getBytesURL);
+            TestCase.assertTrue("getBytesFailed",
+                                theReturnedURL.compareTo(getBytesURL) == 0);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+
+    @Test
     public void testClinicalTrialFormatter() {
         String fileName = "processed-clinicalTrials.9999"; //NCT00867139
         String fileName2 = "processed-clinicalTrials.9998"; //NCT00867035

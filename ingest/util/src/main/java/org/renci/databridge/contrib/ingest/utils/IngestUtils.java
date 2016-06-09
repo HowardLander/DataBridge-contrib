@@ -17,7 +17,7 @@ import org.apache.lucene.analysis.core.StopAnalyzer;
 
 
 /**
- * This class holds the data for a single clinical trial read from the json file
+ * Utility functions for the Clinical Trials ingest.
  * 
  * @author Howard Lander -RENCI (www.renci.org)
  * 
