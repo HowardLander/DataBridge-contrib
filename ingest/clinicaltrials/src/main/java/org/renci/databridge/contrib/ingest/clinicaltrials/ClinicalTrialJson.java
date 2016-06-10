@@ -144,6 +144,9 @@ public class ClinicalTrialJson implements Serializable{
         String theSeparator = " ";
         StringBuilder sb = new StringBuilder();
         Logger logger = Logger.getLogger ("org.renci.databridge.contrib.ingest.clinicaltrials");
+        if (theArray == null) {
+            return new String("");
+        }
         if (theArray.length == 0) {
             return new String("");
         } else {

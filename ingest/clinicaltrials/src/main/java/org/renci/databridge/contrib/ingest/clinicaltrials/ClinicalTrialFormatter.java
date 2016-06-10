@@ -35,8 +35,12 @@ public class ClinicalTrialFormatter implements MetadataFormatter{
            // Now traverse the list of clinical trials.  For each one, allocate a MetadataObject
            // and fill out the Collection Transfer object.  Note that this metadata has neither
            // files or variables.
+           int i = 0;
            for (ClinicalTrialJson thisClinicalTrial: trialList) {
-              this.logger.log (Level.INFO, "processong trialList " );
+              if (i % 100 == 0) {
+                 this.logger.log (Level.INFO, "processing trialList " + i);
+              }
+              i++;
               MetadataObject thisMeta = new MetadataObject();
               CollectionTransferObject thisCTO = new CollectionTransferObject();
               thisCTO.setURL(thisClinicalTrial.getSourceURL());
