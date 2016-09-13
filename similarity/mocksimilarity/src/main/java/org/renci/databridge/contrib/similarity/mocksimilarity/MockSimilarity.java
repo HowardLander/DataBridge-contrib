@@ -18,7 +18,8 @@ import com.rabbitmq.client.*;
 public class MockSimilarity implements SimilarityProcessor {
 
     public double compareCollections (CollectionTransferObject collection1,
-                                      CollectionTransferObject collection2) {
+                                      CollectionTransferObject collection2,
+                                      String params) {
         
         int version1 = collection1.getVersion();
         int version2 = collection2.getVersion();

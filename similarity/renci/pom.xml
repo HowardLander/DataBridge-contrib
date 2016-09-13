@@ -1,0 +1,42 @@
+<project>
+
+    <parent>
+       <groupId>org.renci.databridge.contrib.similarity</groupId>
+       <artifactId>similarity</artifactId>
+       <version>1.0-BETA</version>
+       <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.renci.databridge.contrib.similarity</groupId>
+    <artifactId>renci</artifactId>
+    <name>DataBridge Contrib Similarity: RENCI Similarity Measures</name>
+    <version>1.0-BETA</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.renci.databridge.persistence</groupId>
+            <artifactId>databridge-persistence</artifactId>
+            <version>1.0-BETA</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.mpkorstanje/simmetrics -->
+        <dependency>
+            <groupId>com.github.mpkorstanje</groupId>
+            <artifactId>simmetrics-core</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.renci.databridge.contrib.similarity</groupId>
+          <artifactId>util</artifactId>
+          <version>1.0-BETA</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.renci.databridge.contrib.similarity</groupId>
+          <artifactId>ncat</artifactId>
+          <version>1.0-BETA</version>
+        </dependency>
+    </dependencies>
+</project>
