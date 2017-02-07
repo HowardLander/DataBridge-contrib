@@ -18,6 +18,8 @@
   <modules>
     <module>util</module>
     <module>clinicaltrials</module>
+    <module>network</module>
+    <module>schizConnect</module>
   </modules>
 
 </project>
