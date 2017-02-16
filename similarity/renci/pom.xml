@@ -9,7 +9,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.renci.databridge.contrib.similarity</groupId>
-    <artifactId>renci</artifactId>
+    <artifactId>renci-similarity</artifactId>
     <name>DataBridge Contrib Similarity: RENCI Similarity Measures</name>
     <version>1.0-BETA</version>
 
@@ -26,6 +26,12 @@
             <artifactId>simmetrics-core</artifactId>
             <version>4.1.1</version>
         </dependency>
+
+        <dependency>
+           <groupId>org.la4j</groupId>
+           <artifactId>la4j</artifactId>
+           <version>0.6.0</version>
+         </dependency>
 
         <dependency>
           <groupId>org.renci.databridge.contrib.similarity</groupId>
