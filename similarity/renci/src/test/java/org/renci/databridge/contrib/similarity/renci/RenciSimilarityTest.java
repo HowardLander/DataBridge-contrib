@@ -49,7 +49,7 @@ public class RenciSimilarityTest {
      String params3 = "studyType";
 
      MetadataDAOFactory theFactory =
-        MetadataDAOFactory.getMetadataDAOFactory(MetadataDAOFactory.MONGODB, "install-test", "localhost", 27017);
+        MetadataDAOFactory.getMetadataDAOFactory(MetadataDAOFactory.MONGODB, "install-test", "localhost", 27389, "DataBridgeTest", "ColumbusStockadeBlues");
 
      try {
          CollectionTransferObject collection1 = null;
