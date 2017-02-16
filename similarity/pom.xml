@@ -18,6 +18,9 @@
   <modules>
     <module>mocksimilarity</module>
     <module>ncat</module>
+    <module>renci</module>
+    <module>renciVector</module>
+    <module>util</module>
   </modules>
 <repositories>
     <repository>
