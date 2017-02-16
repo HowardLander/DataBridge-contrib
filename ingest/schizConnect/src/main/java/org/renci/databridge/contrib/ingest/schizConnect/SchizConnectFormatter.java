@@ -65,7 +65,7 @@ public class SchizConnectFormatter implements MetadataFormatter{
                  objectList.add(thisMeta);
 
                  CollectionTransferObject thisCTO = new CollectionTransferObject();
-                 thisCTO.setURL(thisSchizConnect.getAssessment_description());
+                 thisCTO.setURL(thisSchizConnect.getSubjectid());
                  thisCTO.setTitle(thisSchizConnect.getSubjectid());
                  thisCTO.setDescription(thisSchizConnect.getAssessment_description());
                  thisCTO.setProducer(thisSchizConnect.getSource());
