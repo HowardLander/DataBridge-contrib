@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>org.renci.databridge.contrib</groupId>
+    <artifactId>databridge-contrib</artifactId>
+    <version>1.0-BETA</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.renci.databridge.contrib.signature</groupId>
+  <artifactId>signature</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-BETA</version>
+  <name>DataBridge Contrib Signature</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+    <module>schizConnect</module>
+  </modules>
+<repositories>
+    <repository>
+      <id>DataBridge</id>
+      <url>http://maven.renci.org/mvn-repo</url>
+    </repository>
+ </repositories>
+
+</project>
