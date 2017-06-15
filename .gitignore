@@ -5,3 +5,9 @@
 /sna/mocksna/target/
 /dataloader/target/
 /sna/ncat/target/
+/ingest/clinicaltrials/target/*
+*/*.class
+*.class
+*.lst
+*/target
+*/*/target

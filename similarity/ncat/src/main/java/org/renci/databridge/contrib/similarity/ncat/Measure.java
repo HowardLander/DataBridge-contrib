@@ -1,6 +1,7 @@
 package org.renci.databridge.contrib.similarity.ncat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -66,6 +67,28 @@ public class Measure implements SimilarityProcessor {
     }
 
     /**
+     * Grab the data from a user defined field. Remove any trailing numbers from
+     * the key. Note the collection will have exactly one item, but this
+     * conforms to the previous interface.
+     * 
+     * @param collection the collection transfer object
+     * @param fieldName the fieldName for which to return data
+     * @return 
+     */
+    private Collection<String> parseSumDscr(CollectionTransferObject collection, String fieldName) {
+        Collection<String> sumDscr = new ArrayList<>();
+        String key = fieldName;
+        String keyL = key;
+        while (keyL.charAt(keyL.length()-1) <= '9' && keyL.charAt(keyL.length()-1) >= '0') {
+            keyL = keyL.substring(0, keyL.length()-1);
+        }
+        System.out.println("adding metatdata for key: " + key + " " + keyL);
+        sumDscr.add(keyL + ": " + collection.getDataByFieldName(fieldName));
+        System.out.println("data: " + Arrays.toString(sumDscr.toArray()));
+        return sumDscr;
+    }
+    
+    /**
      * This is way one.  convert the object into our way of dealing with things.
      * Way two will be completed later
      * 
@@ -83,6 +106,7 @@ public class Measure implements SimilarityProcessor {
             String keyL = key;
             while (keyL.charAt(keyL.length()-1) <= '9' && keyL.charAt(keyL.length()-1) >= '0')
                 keyL = keyL.substring(0, keyL.length()-1);
+            System.out.println("adding metatdata for key: " + key + " " + keyL);
             sumDscr.add(keyL + ": " + collection.getExtra().get(key));
         }
         return sumDscr;
@@ -105,20 +129,31 @@ public class Measure implements SimilarityProcessor {
     /**
      * @param collection1 survey 1
      * @param collection2 survey 2
+     * @param params in this case, used to specify which metadata fields to compare.
      * @return 
      */
     @Override
     public double compareCollections (CollectionTransferObject collection1,
-                                      CollectionTransferObject collection2) {
+                                      CollectionTransferObject collection2,
+                                      String params) {
         
         //required format
         //list of list of attributes
         Collection<Collection<String>> survey1 = new ArrayList<>();
         Collection<Collection<String>> survey2 = new ArrayList<>();
-        survey1.add(collection1.getKeywords());
-        survey1.add(parseSumDscr(collection1));
-        survey2.add(collection2.getKeywords());
-        survey2.add(parseSumDscr(collection2));
+        System.out.println("params are: " + params);
+
+        String [] fieldArray = params.split("\\|");
+        for (String thisField : fieldArray){
+           System.out.println("thisField is: " + thisField);
+           survey1.add(parseSumDscr(collection1, thisField));
+           survey2.add(parseSumDscr(collection2, thisField));
+        }
+        // Following original code replaced by loop above 
+        // survey1.add(collection1.getKeywords());
+        // survey1.add(parseSumDscr(collection1));
+        // survey2.add(collection2.getKeywords());
+        // survey2.add(parseSumDscr(collection2));
         fillData(survey1, survey2); // This is not needed for all measures, but IS needed for the more complex ones.
         //TODO: only have it fill data if needed by the measurement.
         // bit of a complicated task, 
