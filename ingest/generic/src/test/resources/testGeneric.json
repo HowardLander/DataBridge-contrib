@@ -1,0 +1,57 @@
+[
+  {
+    "URL": "http://renci.org",
+    "title": "firstTest",
+    "description": "A test collection",
+    "producer": "renci.org",
+    "subject": "test",
+    "extra":{
+       "study": "COBRE",
+       "breakfast": "eggs"
+     },
+    "keywords": [
+      "keyword0",
+      "keyword1",
+      "keyword2",
+      "keyword3"
+    ],
+    "fileList": [
+        {
+           "URL": "http://renci.org.file1",
+           "name": "firstFileTest",
+           "description": "First test file",
+           "extra":{
+              "size": "small",
+              "lunch": "grilled cheese"
+            },
+            "variableList": [
+                { 
+                   "name" : "myFirstVariable",
+                   "description" : "the First Variable",
+                   "extra":{
+                      "value1": "10",
+                      "value2": "20"
+                    }
+                },
+                { 
+                   "name" : "mySecondVariable",
+                   "description" : "the Second Variable",
+                   "extra":{
+                      "value1": "100",
+                      "value2": "200"
+                    }
+                }
+             ]
+        },
+        {
+           "URL": "http://renci.org.file2",
+           "name": "secondFileTest",
+           "description": "second test file",
+           "extra":{
+              "size": "small",
+              "lunch": "tacos"
+            }
+        }
+    ]
+  }
+]
